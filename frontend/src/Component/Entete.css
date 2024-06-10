@@ -30,9 +30,29 @@
     text-align: left;
     display: flex;
     align-items: center;
-    margin-right: 5vh;
+    margin-right: 10vh;
 }
 
 .account-container p {
     margin-left: 2vh;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.account-container div {
+    display: flex;
+    align-items: center;
+}
+
+.account-container img {
+    width: 7vh;
+    margin-right: -3vh;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.Entete-deconnection {
+    padding: 5px;
+    background-color: #7984ba;
+    color: white;
 }

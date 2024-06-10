@@ -1,5 +1,7 @@
 import React from 'react'
 import './Entete.css'
+// @ts-ignore
+import iconeMonCompte from '../img/ICO_MonCompte_N.svg'
 
 function Entete(props: { connecter: boolean; setInterfaceNumber: any; setConnecter: any }) {
     const deconnection = () => {
@@ -25,10 +27,15 @@ function Entete(props: { connecter: boolean; setInterfaceNumber: any; setConnect
             {props.connecter ? (
                 <div className="account-container">
                     <div onClick={() => props.setInterfaceNumber(2)}>
-                        <p>Mon compte</p>
+                        <div>
+                            <img src={iconeMonCompte} />
+                        </div>
+                        <div>
+                            <p>Mon compte</p>
+                        </div>
                     </div>
                     <div onClick={deconnection}>
-                        <p>Déconnection</p>
+                        <p className="Entete-deconnection">Déconnection</p>
                     </div>
                 </div>
             ) : null}
