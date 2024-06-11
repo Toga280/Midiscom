@@ -1,7 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
+import './Accueil.css'
 
 function Accueil() {
-    return (<div><p>Accueil</p></div>)
+  return (
+    <div className='Accueil'>
+      <p>Accueil</p>
+    </div>
+  )
 }
 
 export default Accueil
