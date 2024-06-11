@@ -15,9 +15,8 @@
 }
 
 .App-Interface {
-  margin-top: 10vh;
-  margin-left: 35%;
-  width: 30vw;
-  align-items: center;
+  margin-top: 12.5vh;
+  margin-left: 37.5%;
+  width: 25vw;
   order: 2;
 }

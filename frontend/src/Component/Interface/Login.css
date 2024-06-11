@@ -1,0 +1,65 @@
+.Login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 10%;
+}
+
+.Login-text {
+  align-self: flex-start;
+  font-size: 30px;
+  margin-top: -30px;
+}
+
+.Login-container-textarea {
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.Login-textarea {
+  width: 100%;
+  font-size: 12px;
+}
+
+textarea {
+  width: 100%;
+  text-align: center;
+  border: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  resize: none;
+  border-radius: 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 24px;
+  text-align: left;
+}
+
+.Login-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  cursor: pointer;
+  margin-top: 42px;
+}
+
+.Login-text-espace-abonne {
+  margin-top: -35px;
+}
+
+.Login-button-se-connecter {
+  background-color: #7984ba;
+  text-align: center;
+  color: white;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.Login-button-mdp-oublié {
+  color: #7984ba;
+  margin-top: 5%;
+}
