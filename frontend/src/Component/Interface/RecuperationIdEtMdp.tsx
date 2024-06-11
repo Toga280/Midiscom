@@ -4,7 +4,8 @@ function RecuperationIdEtMdp(props: { setInterfaceNumber: any }) {
   const [Email, setEmail] = useState<string>('')
   const [EmailEnvoyer, setEmailEnvoyer] = useState<boolean>(false)
   const [EmailEnvoyerSucces, setEmailEnvoyerSucces] = useState<string>('')
-  const [isSending, setIsSending] = useState<boolean>(false) // Nouvel état pour le chargement
+  const [isSending, setIsSending] = useState<boolean>(false)
+  const [isInitialized, setIsInitialized] = useState<boolean>(false)
 
   const handleChangeEmail = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setEmail(event.target.value)
@@ -12,22 +13,24 @@ function RecuperationIdEtMdp(props: { setInterfaceNumber: any }) {
 
   const envoyerMail = () => {
     setIsSending(true)
+    testMailExistant()
     setTimeout(() => {
       setIsSending(false)
-      testMailExistant()
     }, 2000)
   }
 
   const testMailExistant = () => {
     if (Email === 'test@gmail.com') {
       setEmailEnvoyer(true)
+      changementDuMessageDeRetour(true)
     } else {
       setEmailEnvoyer(false)
+      changementDuMessageDeRetour(false)
     }
   }
 
-  const changementDuMessageDeRetour = () => {
-    if (EmailEnvoyer) {
+  const changementDuMessageDeRetour = (isEmailSent: boolean) => {
+    if (isEmailSent) {
       setEmailEnvoyerSucces('Mail envoyé avec succès')
     } else {
       setEmailEnvoyerSucces('Email non trouvé')
@@ -39,7 +42,10 @@ function RecuperationIdEtMdp(props: { setInterfaceNumber: any }) {
   }
 
   useEffect(() => {
-    changementDuMessageDeRetour()
+    if (isInitialized) {
+    } else {
+      setIsInitialized(true)
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [EmailEnvoyer])
 
