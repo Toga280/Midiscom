@@ -1,0 +1,42 @@
+.MenuPrincipal {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  margin: 5%;
+}
+
+.MenuPrincipal-all-icon-text {
+  width: 100%;
+  height: 100%;
+  font-size: 12px;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.MenuPrincipal-icon-text .icon {
+  height: auto;
+  width: 7vh;
+  margin-top: 5px;
+}
+
+.MenuPrincipal-icon-text {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.MenuPrincipal-icon-text:hover {
+  color: var(--violet);
+}
+
+.MenuPrincipal-icon-text-part-1 {
+  align-self: flex-start;
+}
+
+.MenuPrincipal-icon-text-part-2 {
+  align-self: flex-start;
+  margin-bottom: 5%;
+}

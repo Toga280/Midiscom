@@ -20,14 +20,6 @@ function Entete(props: {
     props.setInterfaceNumber(0)
   }
 
-  const handleMouseEnter = () => {
-    setMonCompteHovered(true)
-  }
-
-  const handleMouseLeave = () => {
-    setMonCompteHovered(false)
-  }
-
   return (
     <div className='Entete'>
       <div
@@ -40,8 +32,9 @@ function Entete(props: {
       {props.connecter ? (
         <div className='account-container'>
           <div
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
+            className='Entete-mon-compte'
+            onMouseEnter={() => setMonCompteHovered(true)}
+            onMouseLeave={() => setMonCompteHovered(false)}
             onClick={() => props.setInterfaceNumber(2)}
           >
             <div>

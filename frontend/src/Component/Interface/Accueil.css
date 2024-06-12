@@ -4,3 +4,20 @@
   width: 100%;
   height: 70vh;
 }
+
+.Accueil-menu-principal {
+  flex: 0 0 33%;
+  /* border: 5px solid blue;
+  box-sizing: border-box; */
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.Accueil-affichage {
+  flex: 1;
+  border-left: 1px solid var(--violet);
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+}

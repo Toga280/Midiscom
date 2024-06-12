@@ -1,14 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Accueil.css'
+import MenuPrincipal from './MenuPrincipal/MenuPrincipal'
+import Affichage from './Affichage/Affichage'
 
 function Accueil() {
+  const [switchAffichage, setSwitchAffichage] = useState<number>(0)
+
   return (
     <div className='Accueil'>
-      <div>
-        <p>Accueil</p>
+      <div className='Accueil-menu-principal'>
+        <MenuPrincipal
+          switchAffichage={switchAffichage}
+          setSwitchAffichage={setSwitchAffichage}
+        />
       </div>
-      <div>
-        <p>Accueil 2</p>
+      <div className='Accueil-affichage'>
+        <Affichage
+          switchAffichage={switchAffichage}
+          setSwitchAffichage={setSwitchAffichage}
+        />
       </div>
     </div>
   )
