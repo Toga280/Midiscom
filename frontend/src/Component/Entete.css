@@ -2,7 +2,7 @@
   height: 7vh;
   /*border: 5px solid red;
     box-sizing: border-box;*/
-  background-color: #ffffff;
+  background-color: white;
   color: black;
   display: flex;
   align-items: center;
@@ -17,13 +17,14 @@
 }
 
 .Entete-com {
-  color: #8089be;
+  color: var(--violet);
   margin-left: 0;
 }
 
 .midis-com-container {
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .account-container {
@@ -31,16 +32,16 @@
   display: flex;
   align-items: center;
   margin-right: 10vh;
+  cursor: pointer;
 }
 
 .account-container p {
   margin-left: 2vh;
-  cursor: pointer;
   font-size: 12px;
 }
 
 .account-container:hover {
-  color: #7984ba;
+  color: var(--violet);
 }
 
 .account-container div {
@@ -52,19 +53,18 @@
   width: 7vh;
   margin-right: -3vh;
   margin-top: 5px;
-  cursor: pointer;
 }
 
 .Entete-deconnection {
   padding: 5px;
-  background-color: #7984ba;
-  border: 2px solid #7984ba;
+  background-color: var(--violet);
+  border: 2px solid var(--violet);
   box-sizing: border-box;
   color: white;
 }
 .Entete-deconnection:hover {
   background-color: white;
-  border: 2px solid #7984ba;
+  border: 2px solid var(--violet);
   box-sizing: border-box;
   color: #7984ba;
 }

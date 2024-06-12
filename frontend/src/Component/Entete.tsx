@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/alt-text */
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import './Entete.css'
 import { images } from './objetImage'
 
@@ -30,19 +30,12 @@ function Entete(props: {
 
   return (
     <div className='Entete'>
-      <div className='midis-com-container'>
-        <p
-          onClick={() => props.setInterfaceNumber(props.connecter ? 1 : 0)}
-          className='Entete-midis'
-        >
-          midis
-        </p>
-        <p
-          onClick={() => props.setInterfaceNumber(props.connecter ? 1 : 0)}
-          className='Entete-com'
-        >
-          com
-        </p>
+      <div
+        onClick={() => props.setInterfaceNumber(props.connecter ? 1 : 0)}
+        className='midis-com-container'
+      >
+        <p className='Entete-midis'>midis</p>
+        <p className='Entete-com'>com</p>
       </div>
       {props.connecter ? (
         <div className='account-container'>

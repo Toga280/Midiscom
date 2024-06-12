@@ -1,6 +1,7 @@
 :root {
   --interface-width: 25vw;
   --interface-margin-left: 37.5%;
+  --violet: #7984ba;
 }
 
 .App {
