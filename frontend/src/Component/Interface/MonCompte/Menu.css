@@ -1,0 +1,91 @@
+.MonCompte-menu-left {
+  flex: 0 0 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.MonCompte-menu-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.MonCompte-button-right {
+  font-size: var(--moyen);
+  font-weight: bold;
+  margin-top: 10%;
+  flex: 33%;
+}
+
+.MonCompte-button-right p {
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+.MonCompte-button-left p {
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+.MonCompte-button-left {
+  font-size: var(--moyen);
+  font-weight: bold;
+  margin-top: 10%;
+  flex: 33%;
+}
+
+.MonCompte-button-nothing {
+  margin-top: 10%;
+  flex: 33%;
+}
+
+.Menu {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  font-size: var(--moyen);
+  font-weight: bold;
+}
+
+.MonCompte-vos-abonnements:hover {
+  cursor: pointer;
+  color: var(--violet);
+}
+
+.MonCompte-vos-commandes:hover {
+  cursor: pointer;
+  color: var(--violet);
+}
+
+.MonCompte-besoin-aide:hover {
+  cursor: pointer;
+  color: var(--violet);
+}
+
+.MonCompte-vos-adresses-contacts:hover {
+  cursor: pointer;
+  color: var(--violet);
+}
+
+.MonCompte-connexions:hover {
+  cursor: pointer;
+  color: var(--violet);
+}
+
+.MonCompte-info {
+  font-size: var(--petit);
+  font-weight: normal;
+}
+
+.MonCompte-header {
+  flex: 0 0 10%;
+}
+
+.MonCompte-body {
+  flex: 1;
+}
+
+.MonCompte-selected-part {
+  display: flex;
+  flex-direction: row;
+}

@@ -1,0 +1,34 @@
+.MonCompte {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 70vh;
+}
+
+.MonCompte-client {
+  display: flex;
+  flex: 0 0 5%;
+  margin-left: 5%;
+  margin-right: 5%;
+  justify-content: center;
+  margin-top: 1%;
+}
+
+.MonCompte-client img {
+  width: 7vh;
+  margin-right: -2%;
+  max-width: 100%;
+}
+.MonCompte-menu {
+  flex: 1;
+}
+
+.MonCompte-numero-client {
+  align-self: flex-end;
+  width: 100%;
+  text-align: right;
+}
+
+.MonCompte-monCompte {
+  margin-top: 20px;
+}

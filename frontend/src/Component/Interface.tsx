@@ -20,7 +20,9 @@ function Interface(props: {
         />
       ) : null}
       {props.interfaceNumber === 1 ? <Accueil /> : null}
-      {props.interfaceNumber === 2 ? <MonCompte /> : null}
+      {props.interfaceNumber === 2 ? (
+        <MonCompte setInterfaceNumber={props.setInterfaceNumber} />
+      ) : null}
       {props.interfaceNumber === 3 ? (
         <RecuperationIdEtMdp setInterfaceNumber={props.setInterfaceNumber} />
       ) : null}

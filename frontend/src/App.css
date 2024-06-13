@@ -2,6 +2,9 @@
   --interface-width: 25vw;
   --interface-margin-left: 37.5%;
   --violet: #7984ba;
+  --gros: 24px;
+  --moyen: 18px;
+  --petit: 12px;
 }
 
 .App {
