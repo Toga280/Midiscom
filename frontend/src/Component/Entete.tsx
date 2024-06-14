@@ -1,20 +1,57 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useState } from 'react'
 import './Entete.css'
-import { images } from './objetImage'
+import {
+  faBars,
+  faRightFromBracket,
+  faUser,
+} from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function Entete(props: {
   connecter: boolean
   setInterfaceNumber: any
   setConnecter: any
 }) {
+  const [switchMenu, setSwitchMenu] = useState<boolean>(false)
+  const handleSwitchMenu = () => {
+    setSwitchMenu(!switchMenu)
+    if (!switchMenu) {
+      document.documentElement.style.setProperty(
+        '--interface-menu-display',
+        'block',
+      )
+    } else {
+      document.documentElement.style.setProperty(
+        '--interface-menu-display',
+        'none',
+      )
+    }
+  }
+
   const [monCompteHovered, setMonCompteHovered] = useState<Boolean>(false)
 
   const deconnection = () => {
     document.documentElement.style.setProperty('--interface-width', '25vw')
     document.documentElement.style.setProperty(
-      '--interface-margin-left',
-      '37.5%',
+      '--interface-width-mobil',
+      '85vw',
+    )
+    document.documentElement.style.setProperty(
+      '--interface-margin-top-mobil',
+      '2vh',
+    )
+    document.documentElement.style.setProperty(
+      '--interface-margin-bot-mobil',
+      '0%',
+    )
+    document.documentElement.style.setProperty(
+      '--interface-height-mobil',
+      'OUAIIIIIII',
+    )
+    document.documentElement.style.setProperty(
+      '--interface-border-radius',
+      '10px',
     )
     props.setConnecter(false)
     props.setInterfaceNumber(0)
@@ -38,18 +75,28 @@ function Entete(props: {
             onClick={() => props.setInterfaceNumber(2)}
           >
             <div>
-              {monCompteHovered ? (
-                <img src={images.monCompteSelected} />
-              ) : (
-                <img src={images.monCompte} />
-              )}
+              <FontAwesomeIcon
+                icon={faUser}
+                style={monCompteHovered ? { color: '#7984ba' } : {}}
+              />
             </div>
             <div>
-              <p>Mon compte</p>
+              <p className='TextCacheMobil'>Mon compte</p>
             </div>
           </div>
-          <div onClick={deconnection}>
-            <p className='Entete-deconnection'>Déconnection</p>
+          <div className='Entete-deconnection-area' onClick={deconnection}>
+            <p className='Entete-deconnection TextCacheMobil'>Déconnection</p>
+            <FontAwesomeIcon
+              icon={faRightFromBracket}
+              className='TextCachePc'
+            />
+          </div>
+          <div>
+            <FontAwesomeIcon
+              icon={faBars}
+              className='TextCachePc'
+              onClick={handleSwitchMenu}
+            />
           </div>
         </div>
       ) : null}

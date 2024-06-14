@@ -16,8 +16,32 @@ function Login(props: { setInterfaceNumber: any; setConnecter: any }) {
   const connection = () => {
     props.setConnecter(true)
     props.setInterfaceNumber(1)
-    document.documentElement.style.setProperty('--interface-width', '50vw') // Modifier la variable CSS
+    document.documentElement.style.setProperty('--interface-width', '50vw')
     document.documentElement.style.setProperty('--interface-margin-left', '25%')
+    document.documentElement.style.setProperty(
+      '--interface-width-mobil',
+      '100vw',
+    )
+    document.documentElement.style.setProperty(
+      '--interface-margin-left-mobil',
+      '0%',
+    )
+    document.documentElement.style.setProperty(
+      '--interface-margin-top-mobil',
+      '0vh',
+    )
+    document.documentElement.style.setProperty(
+      '--interface-margin-bot-mobil',
+      '0%',
+    )
+    document.documentElement.style.setProperty(
+      '--interface-height-mobil',
+      '100%',
+    )
+    document.documentElement.style.setProperty(
+      '--interface-border-radius',
+      '0px',
+    )
   }
 
   const textArea2Ref = useRef<HTMLTextAreaElement | null>(null)

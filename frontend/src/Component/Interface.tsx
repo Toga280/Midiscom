@@ -6,9 +6,9 @@ import MonCompte from './Interface/MonCompte'
 import RecuperationIdEtMdp from './Interface/RecuperationIdEtMdp'
 
 function Interface(props: {
-  connecter: any
+  connecter: boolean
   setConnecter: any
-  interfaceNumber: any
+  interfaceNumber: number
   setInterfaceNumber: any
 }) {
   return (

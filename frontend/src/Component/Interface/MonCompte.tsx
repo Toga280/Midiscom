@@ -15,7 +15,9 @@ function MonCompte(props: { setInterfaceNumber: any }) {
     <div className='MonCompte'>
       <div className='MonCompte-client'>
         <img src={images.monCompteSelected} />
-        <p className='MonCompte-monCompte'>MonCompte</p>
+        <p className='MonCompte-monCompte' style={{ color: 'var(--violet)' }}>
+          Mon_compte
+        </p>
         <p className='MonCompte-numero-client'>Numéro client : XXXXXXXXXX</p>
       </div>
       <div className='MonCompte-menu'>
@@ -25,7 +27,9 @@ function MonCompte(props: { setInterfaceNumber: any }) {
         {interfaceMonCompte === 1 && <VosAbonnements />}
         {interfaceMonCompte === 2 && <VosCommandes />}
         {interfaceMonCompte === 3 && <BesoinAide />}
-        {interfaceMonCompte === 4 && <VosAdressesContacts />}
+        {interfaceMonCompte === 4 && (
+          <VosAdressesContacts setInterfaceMonCompte={setInterfaceMonCompte} />
+        )}
         {interfaceMonCompte === 5 && <Connexions />}
       </div>
     </div>

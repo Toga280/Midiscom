@@ -8,3 +8,10 @@
   overflow: hidden;
   word-wrap: break-word;
 }
+
+@media only screen and (max-width: 768px) and (min-device-width: 320px) and (-webkit-min-device-pixel-ratio: 1.5) {
+  .Interface {
+    height: var(--interface-height-mobil);
+    border-radius: var(--interface-border-radius);
+  }
+}

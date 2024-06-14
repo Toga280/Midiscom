@@ -2,12 +2,14 @@
   flex: 0 0 50%;
   display: flex;
   flex-direction: column;
+  text-align: center;
 }
 
 .MonCompte-menu-right {
   flex: 1;
   display: flex;
   flex-direction: column;
+  text-align: center;
 }
 
 .MonCompte-button-right {
@@ -78,14 +80,41 @@
 }
 
 .MonCompte-header {
+  margin-left: 10%;
+  display: flex;
+  align-items: center;
   flex: 0 0 10%;
+}
+
+.MonCompte-header p {
+  font-size: var(--petit);
+  margin-right: 25%;
+}
+
+.MonCompte-header-head {
+  font-weight: bold;
+  font-size: var(--moyen);
+}
+
+.MonCompte-header-main-icon {
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.MonCompte-header-back {
+  cursor: pointer;
 }
 
 .MonCompte-body {
   flex: 1;
+  width: 100%;
+  height: 100%;
 }
 
 .MonCompte-selected-part {
   display: flex;
   flex-direction: row;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
 }

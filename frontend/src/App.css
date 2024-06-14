@@ -1,6 +1,11 @@
 :root {
   --interface-width: 25vw;
-  --interface-margin-left: 37.5%;
+  --interface-width-mobil: 85vw;
+  --interface-margin-top-mobil: 2vh;
+  --interface-margin-bot-mobil: 0%;
+  --interface-height-mobil: 70%;
+  --interface-border-radius: 10px;
+  --interface-menu-display: none;
   --violet: #7984ba;
   --gros: 24px;
   --moyen: 18px;
@@ -21,11 +26,33 @@
 .App-Entete {
   order: 1;
   width: 100vw;
+  border-bottom: 2px solid black;
 }
 
 .App-Interface {
   margin-top: 12.5vh;
   width: var(--interface-width);
-  margin-left: var(--interface-margin-left);
   order: 2;
+  height: 100%;
+  flex: 100%;
+}
+
+.TextCachePc {
+  display: none;
+}
+
+@media only screen and (max-width: 768px) and (min-device-width: 320px) and (-webkit-min-device-pixel-ratio: 1.5) {
+  .App-Interface {
+    width: var(--interface-width-mobil);
+    margin-top: var(--interface-margin-top-mobil);
+    margin-bottom: var(--interface-margin-bot-mobil);
+  }
+
+  .TextCacheMobil {
+    display: none;
+  }
+
+  .TextCachePc {
+    display: inline-block;
+  }
 }

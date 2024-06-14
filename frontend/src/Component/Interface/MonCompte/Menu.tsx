@@ -1,5 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './Menu.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  faCartArrowDown,
+  faCircleInfo,
+  faEnvelopeOpenText,
+  faPencil,
+  faWifi,
+} from '@fortawesome/free-solid-svg-icons'
 
 function MonCompte(props: { setInterfaceMonCompte: any }) {
   return (
@@ -10,8 +18,9 @@ function MonCompte(props: { setInterfaceMonCompte: any }) {
             onClick={() => props.setInterfaceMonCompte(1)}
             className='MonCompte-vos-abonnements'
           >
+            <FontAwesomeIcon icon={faPencil} size='2xl' />
             <p>Vos abonnements</p>
-            <p className='MonCompte-info'>
+            <p className='MonCompte-info TextCacheMobil'>
               Voir le détail de vos abonnements, soldes de messages
             </p>
           </div>
@@ -21,8 +30,9 @@ function MonCompte(props: { setInterfaceMonCompte: any }) {
             onClick={() => props.setInterfaceMonCompte(2)}
             className='MonCompte-vos-commandes'
           >
-            <p>Vos commandes</p>
-            <p className='MonCompte-info'>
+            <FontAwesomeIcon icon={faCartArrowDown} size='2xl' />
+            <p className='TextCacheMobil'>Vos commandes</p>
+            <p className='MonCompte-info TextCacheMobil'>
               Consulter voc commandes en cours et vos commandes terminées
             </p>
           </div>
@@ -32,8 +42,9 @@ function MonCompte(props: { setInterfaceMonCompte: any }) {
             onClick={() => props.setInterfaceMonCompte(3)}
             className='MonCompte-besoin-aide'
           >
-            <p>Besoin d'aide ?</p>
-            <p className='MonCompte-info'>
+            <FontAwesomeIcon icon={faCircleInfo} size='2xl' />
+            <p className='TextCacheMobil'>Besoin d'aide ?</p>
+            <p className='MonCompte-info TextCacheMobil'>
               Consulter les FAQ's, nous contacter ou résoudre un problème
               technique
             </p>
@@ -46,8 +57,9 @@ function MonCompte(props: { setInterfaceMonCompte: any }) {
             onClick={() => props.setInterfaceMonCompte(4)}
             className='MonCompte-vos-adresses-contacts'
           >
-            <p>Vos adresses contacts</p>
-            <p className='MonCompte-info'>
+            <FontAwesomeIcon icon={faEnvelopeOpenText} size='2xl' />
+            <p className='TextCacheMobil'>Vos adresses contacts</p>
+            <p className='MonCompte-info TextCacheMobil'>
               Renseigner les personnes en charges de la radio E.leclerc pour
               votre magasin
             </p>
@@ -58,15 +70,14 @@ function MonCompte(props: { setInterfaceMonCompte: any }) {
             onClick={() => props.setInterfaceMonCompte(5)}
             className='MonCompte-connexions'
           >
-            <p>Connexions</p>
-            <p className='MonCompte-info'>
+            <FontAwesomeIcon icon={faWifi} size='2xl' />
+            <p className='TextCacheMobil'>Connexions</p>
+            <p className='MonCompte-info TextCacheMobil'>
               Suivre l'état de connexion de vos différents point de vente
             </p>
           </div>
         </div>
-        <div className='MonCompte-button-nothing'>
-          <p></p>
-        </div>
+        <div className='MonCompte-button-nothing'></div>
       </div>
     </div>
   )
