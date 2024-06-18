@@ -1,12 +1,19 @@
-import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
+import MonCompteHeader from './MonCompteHeader'
 
-function BesoinAide() {
+function BesoinAide(props: {
+  setInterfaceMonCompte: any
+  interfaceMonCompte: number
+}) {
   return (
-    <div>
-      <p>BesoinAide</p>
-      <FontAwesomeIcon icon={faChevronLeft} style={{ color: '#7984ba' }} />
+    <div className='MonCompte-selected-part'>
+      <MonCompteHeader
+        setInterfaceMonCompte={props.setInterfaceMonCompte}
+        interfaceMonCompte={props.interfaceMonCompte}
+        mainText="Besoin d'aide ?"
+        subText="Consulter les FAQ's, nous contacter ou résoudre un problème
+              technique"
+      />
     </div>
   )
 }

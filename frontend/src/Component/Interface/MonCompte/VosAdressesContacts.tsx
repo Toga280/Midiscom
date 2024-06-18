@@ -1,12 +1,9 @@
-import {
-  faChevronLeft,
-  faEnvelopeOpenText,
-  faPlus,
-} from '@fortawesome/free-solid-svg-icons'
+import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useState } from 'react'
 import './Menu.css'
 import './VosAdressesContacts.css'
+import MonCompteHeader from './MonCompteHeader'
 
 interface Add {
   add1: boolean
@@ -15,8 +12,10 @@ interface Add {
   add4: boolean
 }
 
-function VosAdressesContacts(props: { setInterfaceMonCompte: any }) {
-  const [backHover, setBackHover] = useState<Boolean>(false)
+function VosAdressesContacts(props: {
+  setInterfaceMonCompte: any
+  interfaceMonCompte: number
+}) {
   const [add, setAdd] = useState<Add>({
     add1: false,
     add2: false,
@@ -33,30 +32,14 @@ function VosAdressesContacts(props: { setInterfaceMonCompte: any }) {
 
   return (
     <div className='MonCompte-selected-part'>
-      <div className='MonCompte-header'>
-        <div className='MonCompte-header-back'>
-          <FontAwesomeIcon
-            icon={faChevronLeft}
-            style={backHover ? { color: '#7984ba' } : {}}
-            onMouseEnter={() => setBackHover(true)}
-            onMouseLeave={() => setBackHover(false)}
-            size='2xl'
-            onClick={() => props.setInterfaceMonCompte(0)}
-          />
-        </div>
-        <FontAwesomeIcon
-          icon={faEnvelopeOpenText}
-          size='2xl'
-          className='MonCompte-header-main-icon'
-        />
-        <div onClick={() => props.setInterfaceMonCompte(4)} className=''>
-          <p className='MonCompte-header-head'>Vos adresses contacts</p>
-          <p className=''>
-            Renseigner les personnes en charges de la radio E.leclerc pour votre
-            magasin
-          </p>
-        </div>
-      </div>
+      <MonCompteHeader
+        setInterfaceMonCompte={props.setInterfaceMonCompte}
+        interfaceMonCompte={props.interfaceMonCompte}
+        mainText={'Vos adresses contacts'}
+        subText={
+          'Renseigner les personnes en charges de la radio E.leclerc pour votre magasin'
+        }
+      />
       <div className='MonCompte-body'>
         <div className='VosAdressesContacts-body'>
           <div className='VosAdressesContacts-body-left'>

@@ -12,6 +12,7 @@ function Entete(props: {
   connecter: boolean
   setInterfaceNumber: any
   setConnecter: any
+  interfaceNumber: number
 }) {
   const [switchMenu, setSwitchMenu] = useState<boolean>(false)
   const handleSwitchMenu = () => {
@@ -92,11 +93,13 @@ function Entete(props: {
             />
           </div>
           <div>
-            <FontAwesomeIcon
-              icon={faBars}
-              className='TextCachePc'
-              onClick={handleSwitchMenu}
-            />
+            {props.interfaceNumber !== 2 && (
+              <FontAwesomeIcon
+                icon={faBars}
+                className='TextCachePc'
+                onClick={handleSwitchMenu}
+              />
+            )}
           </div>
         </div>
       ) : null}

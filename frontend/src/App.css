@@ -6,6 +6,7 @@
   --interface-height-mobil: 70%;
   --interface-border-radius: 10px;
   --interface-menu-display: none;
+  --violet-claire: rgb(247, 248, 250);
   --violet: #7984ba;
   --gros: 24px;
   --moyen: 18px;
@@ -26,7 +27,7 @@
 .App-Entete {
   order: 1;
   width: 100vw;
-  border-bottom: 2px solid black;
+  /*border-bottom: 2px solid black;*/
 }
 
 .App-Interface {
@@ -46,6 +47,7 @@
     width: var(--interface-width-mobil);
     margin-top: var(--interface-margin-top-mobil);
     margin-bottom: var(--interface-margin-bot-mobil);
+    padding-top: 10vh;
   }
 
   .TextCacheMobil {
@@ -54,5 +56,11 @@
 
   .TextCachePc {
     display: inline-block;
+  }
+
+  .App-Entete {
+    position: fixed;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    z-index: 3;
   }
 }

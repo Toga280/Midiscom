@@ -1,9 +1,10 @@
 import React, { useRef, useState } from 'react'
 import './Login.css'
+import axios from 'axios'
 
 function Login(props: { setInterfaceNumber: any; setConnecter: any }) {
-  const [id, setId] = useState('')
-  const [mdp, setMdp] = useState('')
+  const [id, setId] = useState<string>('')
+  const [mdp, setMdp] = useState<string>('')
 
   const handleChangeId = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setId(event.target.value)
@@ -13,7 +14,17 @@ function Login(props: { setInterfaceNumber: any; setConnecter: any }) {
     setMdp(event.target.value)
   }
 
+  const requestConnection = async () => {
+    const response = await axios.post('https://api.effe.fr/login', {
+      login: id,
+      mdp: mdp,
+    })
+    const { token } = response.data
+    console.log('response.data --> ', response.data)
+  }
+
   const connection = () => {
+    // requestConnection()
     props.setConnecter(true)
     props.setInterfaceNumber(1)
     document.documentElement.style.setProperty('--interface-width', '50vw')

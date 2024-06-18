@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import './Menu.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
@@ -31,7 +31,7 @@ function MonCompte(props: { setInterfaceMonCompte: any }) {
             className='MonCompte-vos-commandes'
           >
             <FontAwesomeIcon icon={faCartArrowDown} size='2xl' />
-            <p className='TextCacheMobil'>Vos commandes</p>
+            <p>Vos commandes</p>
             <p className='MonCompte-info TextCacheMobil'>
               Consulter voc commandes en cours et vos commandes terminées
             </p>
@@ -43,7 +43,7 @@ function MonCompte(props: { setInterfaceMonCompte: any }) {
             className='MonCompte-besoin-aide'
           >
             <FontAwesomeIcon icon={faCircleInfo} size='2xl' />
-            <p className='TextCacheMobil'>Besoin d'aide ?</p>
+            <p>Besoin d'aide ?</p>
             <p className='MonCompte-info TextCacheMobil'>
               Consulter les FAQ's, nous contacter ou résoudre un problème
               technique
@@ -58,7 +58,7 @@ function MonCompte(props: { setInterfaceMonCompte: any }) {
             className='MonCompte-vos-adresses-contacts'
           >
             <FontAwesomeIcon icon={faEnvelopeOpenText} size='2xl' />
-            <p className='TextCacheMobil'>Vos adresses contacts</p>
+            <p>Vos adresses contacts</p>
             <p className='MonCompte-info TextCacheMobil'>
               Renseigner les personnes en charges de la radio E.leclerc pour
               votre magasin
@@ -71,7 +71,7 @@ function MonCompte(props: { setInterfaceMonCompte: any }) {
             className='MonCompte-connexions'
           >
             <FontAwesomeIcon icon={faWifi} size='2xl' />
-            <p className='TextCacheMobil'>Connexions</p>
+            <p>Connexions</p>
             <p className='MonCompte-info TextCacheMobil'>
               Suivre l'état de connexion de vos différents point de vente
             </p>

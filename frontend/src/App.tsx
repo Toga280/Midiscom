@@ -14,6 +14,7 @@ function App() {
           connecter={connecter}
           setConnecter={setConnecter}
           setInterfaceNumber={setInterfaceNumber}
+          interfaceNumber={interfaceNumber}
         />
       </div>
       <div className='App-Interface'>

@@ -1,12 +1,18 @@
-import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
+import MonCompteHeader from './MonCompteHeader'
 
-function VosCommandes() {
+function VosCommandes(props: {
+  setInterfaceMonCompte: any
+  interfaceMonCompte: number
+}) {
   return (
-    <div>
-      <p>VosCommandes</p>
-      <FontAwesomeIcon icon={faChevronLeft} style={{ color: '#7984ba' }} />
+    <div className='MonCompte-selected-part'>
+      <MonCompteHeader
+        setInterfaceMonCompte={props.setInterfaceMonCompte}
+        interfaceMonCompte={props.interfaceMonCompte}
+        mainText='Vos commandes'
+        subText='Consulter voc commandes en cours et vos commandes terminées'
+      />
     </div>
   )
 }

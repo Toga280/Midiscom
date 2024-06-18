@@ -16,7 +16,7 @@
 
 .Accueil-affichage {
   flex: 1;
-  border-left: 1px solid var(--violet);
+  border-left: 2px solid rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
   height: 100%;
   width: 100%;
@@ -24,12 +24,10 @@
 
 @media only screen and (max-width: 768px) and (min-device-width: 320px) and (-webkit-min-device-pixel-ratio: 1.5) {
   .Accueil-menu-principal {
-    position: absolute;
+    position: fixed;
     flex: 0 0 70vh;
     width: 80%;
     height: 90%;
-    border-left: 1px solid var(--violet);
-    border-bottom: 1px solid var(--violet);
     display: var(--interface-menu-display);
     z-index: 2;
     background-color: white;

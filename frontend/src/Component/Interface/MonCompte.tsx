@@ -10,7 +10,7 @@ import VosAdressesContacts from './MonCompte/VosAdressesContacts'
 import Connexions from './MonCompte/Connexions'
 
 function MonCompte(props: { setInterfaceNumber: any }) {
-  const [interfaceMonCompte, setInterfaceMonCompte] = useState<Number>(0)
+  const [interfaceMonCompte, setInterfaceMonCompte] = useState<number>(0)
   return (
     <div className='MonCompte'>
       <div className='MonCompte-client'>
@@ -24,13 +24,36 @@ function MonCompte(props: { setInterfaceNumber: any }) {
         {interfaceMonCompte === 0 && (
           <Menu setInterfaceMonCompte={setInterfaceMonCompte} />
         )}
-        {interfaceMonCompte === 1 && <VosAbonnements />}
-        {interfaceMonCompte === 2 && <VosCommandes />}
-        {interfaceMonCompte === 3 && <BesoinAide />}
-        {interfaceMonCompte === 4 && (
-          <VosAdressesContacts setInterfaceMonCompte={setInterfaceMonCompte} />
+        {interfaceMonCompte === 1 && (
+          <VosAbonnements
+            setInterfaceMonCompte={setInterfaceMonCompte}
+            interfaceMonCompte={interfaceMonCompte}
+          />
         )}
-        {interfaceMonCompte === 5 && <Connexions />}
+        {interfaceMonCompte === 2 && (
+          <VosCommandes
+            setInterfaceMonCompte={setInterfaceMonCompte}
+            interfaceMonCompte={interfaceMonCompte}
+          />
+        )}
+        {interfaceMonCompte === 3 && (
+          <BesoinAide
+            setInterfaceMonCompte={setInterfaceMonCompte}
+            interfaceMonCompte={interfaceMonCompte}
+          />
+        )}
+        {interfaceMonCompte === 4 && (
+          <VosAdressesContacts
+            setInterfaceMonCompte={setInterfaceMonCompte}
+            interfaceMonCompte={interfaceMonCompte}
+          />
+        )}
+        {interfaceMonCompte === 5 && (
+          <Connexions
+            setInterfaceMonCompte={setInterfaceMonCompte}
+            interfaceMonCompte={interfaceMonCompte}
+          />
+        )}
       </div>
     </div>
   )

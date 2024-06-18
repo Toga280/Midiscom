@@ -30,7 +30,7 @@
 .VosAdressesContacts-body-box {
   width: 80%;
   margin: 5%;
-  background-color: rgba(173, 216, 230, 0.3);
+  background-color: var(--violet-claire);
   font-weight: bold;
   border-radius: 10px;
   flex: 50%;
