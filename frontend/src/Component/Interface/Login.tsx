@@ -5,6 +5,7 @@ import axios from 'axios'
 function Login(props: { setInterfaceNumber: any; setConnecter: any }) {
   const [id, setId] = useState<string>('')
   const [mdp, setMdp] = useState<string>('')
+  const [erreurConnection, setErreurConnection] = useState<boolean>(false)
 
   const handleChangeId = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setId(event.target.value)
@@ -15,16 +16,37 @@ function Login(props: { setInterfaceNumber: any; setConnecter: any }) {
   }
 
   const requestConnection = async () => {
-    const response = await axios.post('https://api.effe.fr/login', {
-      login: id,
-      mdp: mdp,
-    })
-    const { token } = response.data
-    console.log('response.data --> ', response.data)
+    axios
+      .post('/login', {
+        login: 'leclercpechabou',
+        mdp: 'eb86202b03da0e57b977b32b2a5429e0',
+      })
+      .then((response) => {
+        const data = response.data
+        console.log(response)
+        if (data.erreur === 'Mauvais identifiants') {
+          console.log('erreur lors de la connection, mauvais identifiants')
+          setErreurConnection(true)
+        } else if (data.token !== undefined) {
+          const { id_client, token } = data
+          console.log('token -> ', token)
+          console.log('id_client -> ', id_client)
+          console.log('response -> ', response)
+        }
+
+        // return axios.post(`/compte/${id_client}`, { token })
+      })
+      .then((response) => {
+        // setResult(response.data)
+      })
+      .catch((error) => {
+        console.error('Error:', error)
+      })
   }
 
-  const connection = () => {
-    // requestConnection()
+  const connection = async () => {
+    setErreurConnection(false)
+    // await requestConnection()
     props.setConnecter(true)
     props.setInterfaceNumber(1)
     document.documentElement.style.setProperty('--interface-width', '50vw')

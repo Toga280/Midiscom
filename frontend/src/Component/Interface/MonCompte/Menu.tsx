@@ -13,7 +13,7 @@ function MonCompte(props: { setInterfaceMonCompte: any }) {
   return (
     <div className='Menu'>
       <div className='MonCompte-menu-left'>
-        <div className='MonCompte-button-right'>
+        <div className='MonCompte-button-left'>
           <div
             onClick={() => props.setInterfaceMonCompte(1)}
             className='MonCompte-vos-abonnements'
@@ -25,7 +25,7 @@ function MonCompte(props: { setInterfaceMonCompte: any }) {
             </p>
           </div>
         </div>
-        <div className='MonCompte-button-right'>
+        <div className='MonCompte-button-left'>
           <div
             onClick={() => props.setInterfaceMonCompte(2)}
             className='MonCompte-vos-commandes'
@@ -37,7 +37,7 @@ function MonCompte(props: { setInterfaceMonCompte: any }) {
             </p>
           </div>
         </div>
-        <div className='MonCompte-button-right'>
+        <div className='MonCompte-button-left'>
           <div
             onClick={() => props.setInterfaceMonCompte(3)}
             className='MonCompte-besoin-aide'
@@ -52,7 +52,7 @@ function MonCompte(props: { setInterfaceMonCompte: any }) {
         </div>
       </div>
       <div className='MonCompte-menu-right'>
-        <div className='MonCompte-button-left'>
+        <div className='MonCompte-button-right'>
           <div
             onClick={() => props.setInterfaceMonCompte(4)}
             className='MonCompte-vos-adresses-contacts'
@@ -65,7 +65,7 @@ function MonCompte(props: { setInterfaceMonCompte: any }) {
             </p>
           </div>
         </div>
-        <div className='MonCompte-button-left'>
+        <div className='MonCompte-button-right'>
           <div
             onClick={() => props.setInterfaceMonCompte(5)}
             className='MonCompte-connexions'

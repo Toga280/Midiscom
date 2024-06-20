@@ -66,7 +66,7 @@ function MonCompteHeader(props: {
       )}
 
       <div onClick={() => props.setInterfaceMonCompte(4)} className=''>
-        <p className='MonCompte-header-head'>{props.mainText}</p>
+        <p className='MonCompte-header-head bold-text'>{props.mainText}</p>
         <p className=''>{props.subText}</p>
       </div>
     </div>

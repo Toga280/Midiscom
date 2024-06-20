@@ -1,0 +1,50 @@
+.VosAbonnements {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.VosAbonnements-body {
+  width: 100%;
+  height: 100%;
+  background-color: var(--violet-claire);
+  flex-direction: row;
+  flex: 1 50%;
+  overflow-x: auto;
+}
+
+.VosAbonnements-main-body {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.VosAbonnements-anything-1 {
+  flex: 0 25%;
+}
+
+.VosAbonnements-anything-2 {
+  flex: 2 25%;
+}
+
+.VosAbonnements-image {
+  margin-top: 10%;
+  margin-left: 10%;
+  max-width: 25%;
+}
+
+.VosAbonnements-text {
+  margin-left: 10%;
+  font-size: var(--petit);
+}
+
+.colored-text {
+  color: var(--violet);
+  font-weight: bold;
+}
+
+.bold-text {
+  font-weight: bold;
+  color: black;
+}

@@ -19,13 +19,13 @@
     "web-vitals": "^2.1.4",
     "yarn": "^1.22.22"
   },
-  "proxy": "https://api.effe.fr",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "proxy": "https://api.effe.fr",
   "eslintConfig": {
     "extends": [
       "react-app",
