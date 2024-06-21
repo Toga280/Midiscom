@@ -1,0 +1,27 @@
+.MenuDeroulant-Container {
+  display: flex;
+}
+
+.MenuDeroulant {
+  background-color: var(--violet-claire);
+  width: 70%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  display: flex;
+}
+
+.MenuDeroulant-mainText {
+  flex: 1;
+  margin-left: 10px;
+  font-size: var(--petit);
+}
+
+.MenuDeroulant-bouton-deroule {
+  margin-left: auto;
+  margin-right: 10px;
+}
+
+.MenuDeroulant-subText {
+  color: gray;
+}

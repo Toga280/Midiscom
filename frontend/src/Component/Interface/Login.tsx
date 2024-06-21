@@ -17,7 +17,7 @@ function Login(props: { setInterfaceNumber: any; setConnecter: any }) {
 
   const requestConnection = async () => {
     axios
-      .post('/login', {
+      .post('https://api.effe.fr/login', {
         login: 'leclercpechabou',
         mdp: 'eb86202b03da0e57b977b32b2a5429e0',
       })
