@@ -1,13 +1,13 @@
 .MenuDeroulant-Container {
   display: flex;
+  width: 90%;
+  margin-top: 10px;
 }
 
 .MenuDeroulant {
-  background-color: var(--violet-claire);
-  width: 70%;
+  width: 100%;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
   display: flex;
 }
 
@@ -15,6 +15,8 @@
   flex: 1;
   margin-left: 10px;
   font-size: var(--petit);
+  font-weight: bold;
+  color: black;
 }
 
 .MenuDeroulant-bouton-deroule {
@@ -24,4 +26,35 @@
 
 .MenuDeroulant-subText {
   color: gray;
+}
+
+.MenuDeroulant-body {
+  width: 100%;
+  background-color: var(--violet-claire);
+  padding: 10px;
+}
+
+.MenuDeroulant-data {
+  margin: auto;
+}
+
+.MenuDeroulant-Container-content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.MenuDeroulant-content {
+  margin-right: 10px;
+}
+
+.MenuDeroulant-break {
+  width: 100%; /* Forcer un retour à la ligne */
+  height: 0; /* Optionnel: réduire la hauteur de l'élément de ligne de rupture */
+}
+
+.MenuDeroulant-image {
+  width: 50px;
+  height: auto;
 }

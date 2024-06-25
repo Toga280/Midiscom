@@ -13,13 +13,32 @@
   --petit: 12px;
 }
 
+::-webkit-scrollbar {
+  width: 7px; /* Largeur de la scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--violet);
+  border: 2px solid #f1f1f1; /* Ajoute une bordure pour contrôler la taille effective */
+  cursor: pointer;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  border: 1px solid #f1f1f1; /* Ajoute une bordure pour contrôler la taille effective */
+}
+
 .App {
   height: 100vh;
   width: 100%;
-  background-image: url('./img/Background-Vector.png');
+  background-image: url(./img/AdobeStock.jpeg);
   background-size: cover;
   display: flex;
   flex-direction: column;
+  background-position: center;
   align-items: center;
   color: white;
 }

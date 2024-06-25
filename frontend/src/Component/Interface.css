@@ -5,7 +5,6 @@
   color: black;
   display: flex;
   border-radius: 10px;
-  overflow: hidden;
   word-wrap: break-word;
 }
 

@@ -3,11 +3,11 @@ export interface MenuDeroulantInterface {
   textSecondaire?: string
   menuDeroulantSecondaire?: boolean
   couleurFond?: string //hexadecimal
-  data?: DataMenuDeroulant[]
+  data: DataMenuDeroulant[]
 }
 
 type DataMenuDeroulant =
-  | Text
+  | TextInterface
   | IconeDeroulant
   | EntreText
   | Calendrier
@@ -16,20 +16,25 @@ type DataMenuDeroulant =
   | MenuDeroulantInterface
   | Checkbox
   | PopUp[]
+  | RetourALaLigne
 
-interface Text {
+export interface TextInterface {
   info: string
   couleur?: string
   gras?: boolean
   secondaire?: boolean
-  important?: boolean
+  important?: boolean //gras x2
 }
 
 interface IconeDeroulant {
+  // ?? jcp ce que j'ai fumé
   etat?: boolean //true si ouvert, false si fermer de base
 }
 
-interface EntreText {
+export interface EntreText {
+  setEntreText: boolean
+  value: string | number
+  setValue: React.Dispatch<React.SetStateAction<string | number>>
   onlyNombre?: boolean
   xxl?: boolean
 }
@@ -38,17 +43,23 @@ interface Calendrier {
   modifiable?: boolean
 }
 
-interface Switch {
-  etat?: boolean
+export interface Switch {
+  setSwitch: boolean
+  valueSwitch: boolean
+  setValueSwitch: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-interface Question {
-  redirection?: number
+export interface Question {
+  setQuestion: boolean
+  setRedirection: React.Dispatch<React.SetStateAction<number>>
+  redirection: number
   popUp?: PopUp[]
 }
 
-interface Checkbox {
-  etat?: boolean
+export interface Checkbox {
+  setCheckbox: boolean
+  valueCheckbox: boolean
+  setValueCheckbox: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 interface PopUp {
@@ -71,4 +82,8 @@ interface Bouton {
 interface BordureBouton {
   couleur: string // en hexadecimal
   epaisseur: number // en px
+}
+
+export interface RetourALaLigne {
+  isRetourALaLigne: boolean
 }

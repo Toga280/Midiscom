@@ -1,5 +1,6 @@
 import React from 'react'
 import './Affichage.css'
+import OuvFermExceptionnelles from './OuvFermExceptionnelles'
 
 function Affichage(props: { switchAffichage: any; setSwitchAffichage: any }) {
   return (
@@ -15,7 +16,11 @@ function Affichage(props: { switchAffichage: any; setSwitchAffichage: any }) {
           culpa qui officia deserunt mollit anim id est laborum.
         </p>
       )}
-      {props.switchAffichage === 1 && <p>1</p>}
+      {props.switchAffichage === 1 && (
+        <p>
+          <OuvFermExceptionnelles />
+        </p>
+      )}
       {props.switchAffichage === 2 && <p>2</p>}
       {props.switchAffichage === 3 && <p>3</p>}
       {props.switchAffichage === 4 && <p>4</p>}

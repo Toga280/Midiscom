@@ -15,19 +15,32 @@ function Login(props: { setInterfaceNumber: any; setConnecter: any }) {
     setMdp(event.target.value)
   }
 
+  /* en urlencode */
+  const params = new URLSearchParams() //data envoyé a l'api via l'urlencode
+  params.append('login', 'leclercpechabou')
+  params.append('mdp', 'eb86202b03da0e57b977b32b2a5429e0')
+
   const requestConnection = async () => {
-    axios
-      .post('https://api.effe.fr/login', {
-        login: 'leclercpechabou',
-        mdp: 'eb86202b03da0e57b977b32b2a5429e0',
+    //déclaration de la fonction fleché en asynchrone
+    axios //bibliotheque pour simplifier les requetes api
+      .post('https://api.effe.fr/login', params, {
+        //post classique, ou j'envoi les data dans 'params'
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded', //type de donné envoyer, sera 'application/json' en json
+        },
       })
       .then((response) => {
+        //lors ce que je ressois la data de réponse
         const data = response.data
         console.log(response)
-        if (data.erreur === 'Mauvais identifiants') {
-          console.log('erreur lors de la connection, mauvais identifiants')
-          setErreurConnection(true)
+        if (data.status === 401) {
+          //si je me prend un unauthorized
+          console.log(
+            'erreur lors de la connection, mauvais identifiants ou mdp',
+          )
+          setErreurConnection(true) //partie front, n'a pas d'impact sur la requete
         } else if (data.token !== undefined) {
+          //si je ressois bien mon token
           const { id_client, token } = data
           console.log('token -> ', token)
           console.log('id_client -> ', id_client)
