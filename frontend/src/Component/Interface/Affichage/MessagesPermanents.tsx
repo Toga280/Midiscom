@@ -3,15 +3,15 @@ import MenuDeroulant from '../../MenuDeroulant/MenuDeroulant'
 import { MenuDeroulantInterface } from '../../MenuDeroulant/MenuDeroulantInterface'
 
 const ConsulterOuvFermDejaEnregistre: MenuDeroulantInterface = {
-  textPrincipal: 'Consulter les ouvertures et fermetures déjà enregistrées',
-  textSecondaire: '',
-  data: [{ info: 'notiong for now', couleur: 'red' }],
+  textPrincipal: 'Modifier les messages permanents de :',
+  textSecondaire: 'Hyper',
+  data: [{ info: 'nothing for now', couleur: 'red' }],
 }
 
 const LeChangementConcerne: MenuDeroulantInterface = {
-  textPrincipal: 'Le changement concerne :',
-  textSecondaire: 'Une ouverture exceptionnelle',
-  data: [{ info: 'notiong for now', couleur: 'red' }],
+  textPrincipal: 'Vos messages fixes :',
+  textSecondaire: '',
+  data: [{ info: 'nothing for now', couleur: 'red' }],
 }
 
 function MessagesPermanents() {
@@ -19,13 +19,20 @@ function MessagesPermanents() {
     <div className='OuvFermExceptionnelles'>
       <div className='OuvFermExceptionnelles-header'>
         <p style={{ fontWeight: 'bolder', marginLeft: '5%' }}>
-          Ouv/Ferm Exceptionnelles
+          Messages permanents
         </p>
       </div>
       <div className='OuvFermExceptionnelles-body'>
         <MenuDeroulant
           menuDeroulantInterface={ConsulterOuvFermDejaEnregistre}
         />
+        <div className='OuvFermExceptionnelles-area'>
+          <p>Type de messages : </p>
+          <select>
+            <option value='Fixes'>Fixes</option>
+            <option value='En rotation'>En rotation</option>
+          </select>
+        </div>
         <MenuDeroulant menuDeroulantInterface={LeChangementConcerne} />
         <div className='OuvFermExceptionnelles-button'>Valider</div>
       </div>

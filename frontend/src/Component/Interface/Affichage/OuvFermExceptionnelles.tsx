@@ -6,31 +6,31 @@ import './OuvFermExceptionnelles.css'
 const ConsulterOuvFermDejaEnregistre: MenuDeroulantInterface = {
   textPrincipal: 'Consulter les ouvertures et fermetures déjà enregistrées',
   textSecondaire: '',
-  data: [{ info: 'notiong for now', couleur: 'red' }],
+  data: [{ info: 'nothing for now', couleur: 'red' }],
 }
 
 const LeChangementConcerne: MenuDeroulantInterface = {
   textPrincipal: 'Le changement concerne :',
   textSecondaire: 'Une ouverture exceptionnelle',
-  data: [{ info: 'notiong for now', couleur: 'red' }],
+  data: [{ info: 'nothing for now', couleur: 'red' }],
 }
 
 const DateSouhaitée: MenuDeroulantInterface = {
   textPrincipal: 'Date Souhaitée',
   textSecondaire: '28 octobre 2023',
-  data: [{ info: 'notiong for now', couleur: 'red' }],
+  data: [{ info: 'nothing for now', couleur: 'red' }],
 }
 
 const HorairesOuverture: MenuDeroulantInterface = {
   textPrincipal: "Horaires d'ouverture :",
   textSecondaire: '08h30-19h30',
-  data: [{ info: 'notiong for now', couleur: 'red' }],
+  data: [{ info: 'nothing for now', couleur: 'red' }],
 }
 
 const EnregistrerPour: MenuDeroulantInterface = {
   textPrincipal: 'Enregistrer pour :',
   textSecondaire: 'Hyper',
-  data: [{ info: 'notiong for now', couleur: 'red' }],
+  data: [{ info: 'nothing for now', couleur: 'red' }],
 }
 
 function OuvFermExceptionnelles() {
