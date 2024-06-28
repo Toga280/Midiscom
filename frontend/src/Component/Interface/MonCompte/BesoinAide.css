@@ -1,0 +1,48 @@
+.BesoinAide {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+}
+
+.BesoinAide-info {
+  flex: 0 60%;
+  width: 100%;
+  margin-left: 2%;
+  overflow: auto;
+  height: 100%;
+}
+
+.BesoinAide-contact {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  border: solid black 2px;
+  flex-direction: column;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 20px;
+}
+
+.BesoinAide-contact-box {
+  flex: 33%;
+  padding-bottom: 20px;
+  border-bottom: 2px dashed black;
+  display: flex;
+  flex-direction: column;
+}
+
+#last {
+  border-bottom: none;
+}
+
+.BesoinAide-contact-box-contact {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.BesoinAide-contact-box-contact p {
+  margin: 0; /* Supprime le margin par défaut du <p> */
+  padding-left: 5px; /* Ajoute un espace entre l'icône et le texte si nécessaire */
+  font-size: var(--petit);
+}
