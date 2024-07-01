@@ -32,9 +32,11 @@ function CampagnesGALEC() {
   return (
     <div className='OuvFermExceptionnelles'>
       <div className='OuvFermExceptionnelles-header'>
-        <p style={{ fontWeight: 'bolder', marginLeft: '5%' }}>
-          Campagnes GALEC
-        </p>
+        <div style={{ width: '80%', marginLeft: '5%' }}>
+          <p style={{ fontWeight: 'bolder', marginLeft: '5%' }}>
+            Campagnes GALEC
+          </p>
+        </div>
         <img
           src={
             questionHover

@@ -38,9 +38,11 @@ function OuvFermExceptionnelles() {
   return (
     <div className='OuvFermExceptionnelles'>
       <div className='OuvFermExceptionnelles-header'>
-        <p style={{ fontWeight: 'bolder', marginLeft: '5%' }}>
-          Ouv/Ferm Exceptionnelles
-        </p>
+        <div style={{ width: '80%', marginLeft: '5%' }}>
+          <p style={{ fontWeight: 'bolder', marginLeft: '5%' }}>
+            Ouv/Ferm Exceptionnelles
+          </p>
+        </div>
         <img
           src={
             questionHover

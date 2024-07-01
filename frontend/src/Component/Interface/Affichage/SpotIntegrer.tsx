@@ -20,9 +20,11 @@ function SpotIntegrer() {
   return (
     <div className='OuvFermExceptionnelles'>
       <div className='OuvFermExceptionnelles-header'>
-        <p style={{ fontWeight: 'bolder', marginLeft: '5%' }}>
-          Spot à intégrer
-        </p>
+        <div style={{ width: '80%', marginLeft: '5%' }}>
+          <p style={{ fontWeight: 'bolder', marginLeft: '5%' }}>
+            Spot à intégrer
+          </p>
+        </div>
         <img
           src={
             questionHover

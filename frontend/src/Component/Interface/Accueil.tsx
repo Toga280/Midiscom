@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './Accueil.css'
 import MenuPrincipal from './MenuPrincipal/MenuPrincipal'
 import Affichage from './Affichage/Affichage'
+import EnteteAffichage from './Affichage/EnteteAffichage'
 
 function Accueil() {
   const [switchAffichage, setSwitchAffichage] = useState<number>(0)
@@ -15,6 +16,7 @@ function Accueil() {
         />
       </div>
       <div className='Accueil-affichage'>
+        <EnteteAffichage />
         <Affichage
           switchAffichage={switchAffichage}
           setSwitchAffichage={setSwitchAffichage}

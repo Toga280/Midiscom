@@ -19,9 +19,12 @@ function MessagesPermanents() {
   return (
     <div className='OuvFermExceptionnelles'>
       <div className='OuvFermExceptionnelles-header'>
-        <p style={{ fontWeight: 'bolder', marginLeft: '5%' }}>
-          Messages permanents
-        </p>
+        <div style={{ width: '80%', marginLeft: '5%' }}>
+          <p style={{ fontWeight: 'bolder' }}>Messages permanents</p>
+          <p style={{ fontSize: 'var(--petit)' }}>
+            (inclus dans votre abonnement)
+          </p>
+        </div>
         <img
           src={
             questionHover
@@ -29,7 +32,11 @@ function MessagesPermanents() {
               : `${process.env.PUBLIC_URL}/img/Question.svg`
           }
           alt='Logo'
-          style={{ width: '50px', height: 'auto', cursor: 'pointer' }}
+          style={{
+            width: '50px',
+            height: 'auto',
+            cursor: 'pointer',
+          }}
           onMouseEnter={() => setQuestionHover(true)}
           onMouseLeave={() => setQuestionHover(false)}
         />

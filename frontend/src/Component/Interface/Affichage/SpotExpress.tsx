@@ -26,7 +26,13 @@ function SpotExpress() {
   return (
     <div className='OuvFermExceptionnelles'>
       <div className='OuvFermExceptionnelles-header'>
-        <p style={{ fontWeight: 'bolder', marginLeft: '5%' }}>Spot express</p>
+        <div style={{ width: '80%', marginLeft: '5%' }}>
+          <p style={{ fontWeight: 'bolder', marginLeft: '5%' }}>Spot express</p>
+          <p style={{ fontSize: 'var(--petit)' }}>
+            (Pour créer un spot à destination d'une radio FM contacter
+            s.communication.com)
+          </p>
+        </div>
         <img
           src={
             questionHover

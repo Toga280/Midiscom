@@ -7,10 +7,11 @@ import CampagnesGALEC from './CampagnesGALEC'
 import SpotExpress from './SpotExpress'
 import SpotIntegrer from './SpotIntegrer'
 import CataloguesMidis from './CataloguesMidis'
+import MusiqueThematiques from './MusiquesThématiques'
 
 function Affichage(props: { switchAffichage: any; setSwitchAffichage: any }) {
   return (
-    <div>
+    <div style={{}}>
       {props.switchAffichage === 0 && <p></p>}
       {props.switchAffichage === 1 && (
         <p>
@@ -22,7 +23,11 @@ function Affichage(props: { switchAffichage: any; setSwitchAffichage: any }) {
           <MessagesPermanents />
         </p>
       )}
-      {props.switchAffichage === 3 && <p></p>}
+      {props.switchAffichage === 3 && (
+        <p>
+          <MusiqueThematiques />
+        </p>
+      )}
       {props.switchAffichage === 4 && (
         <p>
           <HorairesOuvertures />

@@ -49,9 +49,11 @@ function HorairesOuvertures() {
   return (
     <div className='OuvFermExceptionnelles'>
       <div className='OuvFermExceptionnelles-header'>
-        <p style={{ fontWeight: 'bolder', marginLeft: '5%' }}>
-          Horaires d'ouvertures
-        </p>
+        <div style={{ width: '80%', marginLeft: '5%' }}>
+          <p style={{ fontWeight: 'bolder', marginLeft: '5%' }}>
+            Horaires d'ouvertures
+          </p>
+        </div>
         <img
           src={
             questionHover
