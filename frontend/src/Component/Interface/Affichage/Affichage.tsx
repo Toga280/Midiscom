@@ -8,6 +8,7 @@ import SpotExpress from './SpotExpress'
 import SpotIntegrer from './SpotIntegrer'
 import CataloguesMidis from './CataloguesMidis'
 import MusiqueThematiques from './MusiquesThématiques'
+import TempsCalme from './TempsCalme'
 
 function Affichage(props: { switchAffichage: any; setSwitchAffichage: any }) {
   return (
@@ -51,6 +52,11 @@ function Affichage(props: { switchAffichage: any; setSwitchAffichage: any }) {
       {props.switchAffichage === 8 && (
         <p>
           <CataloguesMidis />
+        </p>
+      )}
+      {props.switchAffichage === 9 && (
+        <p>
+          <TempsCalme />
         </p>
       )}
     </div>

@@ -18,6 +18,7 @@ function MenuPrincipal(props: {
   const [spotExpressHover, setSpotExpressHover] = useState<Boolean>(false)
   const [spotAIntegrerHover, setSpotAIntegrerHover] = useState<Boolean>(false)
   const [cataMidisHover, setCataMidisHover] = useState<Boolean>(false)
+  const [tempsCalmeHover, setTempsCalmeHover] = useState<Boolean>(false)
 
   useEffect(() => {
     switch (props.switchAffichage) {
@@ -29,6 +30,7 @@ function MenuPrincipal(props: {
         setSpotExpressHover(false)
         setSpotAIntegrerHover(false)
         setCataMidisHover(false)
+        setTempsCalmeHover(false)
         break
       case 2:
         setOuvertureFermetureExceptionnelHover(false)
@@ -38,6 +40,7 @@ function MenuPrincipal(props: {
         setSpotExpressHover(false)
         setSpotAIntegrerHover(false)
         setCataMidisHover(false)
+        setTempsCalmeHover(false)
         break
       case 3:
         setOuvertureFermetureExceptionnelHover(false)
@@ -47,6 +50,7 @@ function MenuPrincipal(props: {
         setSpotExpressHover(false)
         setSpotAIntegrerHover(false)
         setCataMidisHover(false)
+        setTempsCalmeHover(false)
         break
       case 4:
         setOuvertureFermetureExceptionnelHover(false)
@@ -56,6 +60,7 @@ function MenuPrincipal(props: {
         setSpotExpressHover(false)
         setSpotAIntegrerHover(false)
         setCataMidisHover(false)
+        setTempsCalmeHover(false)
         break
       case 5:
         setOuvertureFermetureExceptionnelHover(false)
@@ -65,6 +70,7 @@ function MenuPrincipal(props: {
         setSpotExpressHover(false)
         setSpotAIntegrerHover(false)
         setCataMidisHover(false)
+        setTempsCalmeHover(false)
         break
       case 6:
         setOuvertureFermetureExceptionnelHover(false)
@@ -74,6 +80,7 @@ function MenuPrincipal(props: {
         setGalecHover(false)
         setSpotAIntegrerHover(false)
         setCataMidisHover(false)
+        setTempsCalmeHover(false)
         break
       case 7:
         setOuvertureFermetureExceptionnelHover(false)
@@ -83,6 +90,7 @@ function MenuPrincipal(props: {
         setGalecHover(false)
         setSpotExpressHover(false)
         setCataMidisHover(false)
+        setTempsCalmeHover(false)
         break
       case 8:
         setOuvertureFermetureExceptionnelHover(false)
@@ -92,7 +100,18 @@ function MenuPrincipal(props: {
         setGalecHover(false)
         setSpotExpressHover(false)
         setSpotAIntegrerHover(false)
+        setTempsCalmeHover(false)
         break
+      case 9:
+        setOuvertureFermetureExceptionnelHover(false)
+        setMessageHover(false)
+        selMusiqueHover(false)
+        setHoraireHover(false)
+        setGalecHover(false)
+        setSpotExpressHover(false)
+        setSpotAIntegrerHover(false)
+        setCataMidisHover(false)
+        setTempsCalmeHover(true)
     }
   }, [props.switchAffichage])
 
@@ -151,6 +170,21 @@ function MenuPrincipal(props: {
               <img className='icon' src={images.musique} />
             )}
             <p>Musiques thématiques</p>
+          </div>
+          <div
+            className='MenuPrincipal-icon-text'
+            onMouseEnter={() => setTempsCalmeHover(true)}
+            onMouseLeave={() =>
+              props.switchAffichage !== 9 && setTempsCalmeHover(false)
+            }
+            onClick={() => props.setSwitchAffichage(9)}
+          >
+            {tempsCalmeHover ? (
+              <img className='icon' src={images.horaireSelected} />
+            ) : (
+              <img className='icon' src={images.horaire} />
+            )}
+            <p>Temps calme</p>
           </div>
           <div
             className='MenuPrincipal-icon-text'

@@ -16,7 +16,7 @@ function Accueil() {
         />
       </div>
       <div className='Accueil-affichage'>
-        <EnteteAffichage />
+        {/* <EnteteAffichage /> */}
         <Affichage
           switchAffichage={switchAffichage}
           setSwitchAffichage={setSwitchAffichage}

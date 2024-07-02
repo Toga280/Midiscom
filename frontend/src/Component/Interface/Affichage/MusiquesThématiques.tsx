@@ -60,6 +60,15 @@ function MusiqueThematiques() {
 
         <MenuDeroulant menuDeroulantInterface={PeriodeDiffustionSouhaitee} />
         <MenuDeroulant menuDeroulantInterface={DiffuserPersonnel} />
+        <div className='OuvFermExceptionnelles-area-no-display'>
+          <p>Catalogue GALEC </p>
+          <select>
+            <option value='Non'>
+              GALEC OP23G308G " E8 - vos Supers Pouvoirs d'achat "
+            </option>
+          </select>
+        </div>
+        <div className='OuvFermExceptionnelles-button'>Valider</div>
       </div>
     </div>
   )
