@@ -5,7 +5,7 @@ import axios from 'axios'
 function Login(props: { setInterfaceNumber: any; setConnecter: any }) {
   const [id, setId] = useState<string>('')
   const [mdp, setMdp] = useState<string>('')
-  const [erreurConnection, setErreurConnection] = useState<boolean>(false)
+  const [erreurConnection, setErreurConnection] = useState<number | null>(null)
 
   const handleChangeId = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setId(event.target.value)
@@ -15,79 +15,76 @@ function Login(props: { setInterfaceNumber: any; setConnecter: any }) {
     setMdp(event.target.value)
   }
 
-  /* en urlencode */
-  const params = new URLSearchParams() //data envoyé a l'api via l'urlencode
-  params.append('login', 'leclercpechabou')
-  params.append('mdp', 'eb86202b03da0e57b977b32b2a5429e0')
-
-  const requestConnection = async () => {
-    //déclaration de la fonction fleché en asynchrone
-    axios //bibliotheque pour simplifier les requetes api
-      .post('https://api.effe.fr/login', params, {
-        //post classique, ou j'envoi les data dans 'params'
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded', //type de donné envoyer, sera 'application/json' en json
+  const requestConnection = async (): Promise<boolean> => {
+    try {
+      const response = await axios.post(
+        'http://olfdif.midis.com:82/auth',
+        { login: id, password: mdp },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
         },
-      })
-      .then((response) => {
-        //lors ce que je ressois la data de réponse
-        const data = response.data
-        console.log(response)
-        if (data.status === 401) {
-          //si je me prend un unauthorized
-          console.log(
-            'erreur lors de la connection, mauvais identifiants ou mdp',
-          )
-          setErreurConnection(true) //partie front, n'a pas d'impact sur la requete
-        } else if (data.token !== undefined) {
-          //si je ressois bien mon token
-          const { id_client, token } = data
-          console.log('token -> ', token)
-          console.log('id_client -> ', id_client)
-          console.log('response -> ', response)
-        }
+      )
 
-        // return axios.post(`/compte/${id_client}`, { token })
-      })
-      .then((response) => {
-        // setResult(response.data)
-      })
-      .catch((error) => {
+      const data = response.data
+      console.log(response)
+      if (response.status === 200) {
+        console.log('token -> ', data.token)
+        console.log('id -> ', data.id)
+        return true
+      }
+    } catch (error) {
+      if (axios.isAxiosError(error) && error.response?.status === 401) {
+        console.log('erreur lors de la connection, mauvais identifiants ou mdp')
+        setErreurConnection(401)
+        return false
+      } else {
         console.error('Error:', error)
-      })
+        return false
+      }
+    }
+    return false
   }
 
   const connection = async () => {
-    setErreurConnection(false)
-    // await requestConnection()
-    props.setConnecter(true)
-    props.setInterfaceNumber(1)
-    document.documentElement.style.setProperty('--interface-width', '50vw')
-    document.documentElement.style.setProperty('--interface-margin-left', '25%')
-    document.documentElement.style.setProperty(
-      '--interface-width-mobil',
-      '100vw',
-    )
-    document.documentElement.style.setProperty(
-      '--interface-margin-left-mobil',
-      '0%',
-    )
-    document.documentElement.style.setProperty(
-      '--interface-margin-top-mobil',
-      '0vh',
-    )
-    document.documentElement.style.setProperty(
-      '--interface-margin-bot-mobil',
-      '0%',
-    )
-    document.documentElement.style.setProperty(
-      '--interface-height-mobil',
-      '100%',
-    )
-    document.documentElement.style.setProperty(
-      '--interface-border-radius',
-      '0px',
-    )
+    setErreurConnection(null)
+    const success = await requestConnection()
+    console.log('erreurConnection --> ', erreurConnection)
+    console.log('success --> ', success)
+    if (success) {
+      props.setConnecter(true)
+      props.setInterfaceNumber(1)
+      document.documentElement.style.setProperty('--interface-width', '50vw')
+      document.documentElement.style.setProperty(
+        '--interface-margin-left',
+        '25%',
+      )
+      document.documentElement.style.setProperty(
+        '--interface-width-mobil',
+        '100vw',
+      )
+      document.documentElement.style.setProperty(
+        '--interface-margin-left-mobil',
+        '0%',
+      )
+      document.documentElement.style.setProperty(
+        '--interface-margin-top-mobil',
+        '0vh',
+      )
+      document.documentElement.style.setProperty(
+        '--interface-margin-bot-mobil',
+        '0%',
+      )
+      document.documentElement.style.setProperty(
+        '--interface-height-mobil',
+        '100%',
+      )
+      document.documentElement.style.setProperty(
+        '--interface-border-radius',
+        '0px',
+      )
+    }
   }
 
   const textArea2Ref = useRef<HTMLTextAreaElement | null>(null)
@@ -134,6 +131,7 @@ function Login(props: { setInterfaceNumber: any; setConnecter: any }) {
             onKeyDown={handleKeyDownValide}
           />
         </div>
+        {erreurConnection === 401 ? <p>Movais ID ou MDP</p> : null}
       </div>
       <div className='Login-button'>
         <div className='Login-button-se-connecter' onClick={connection}>

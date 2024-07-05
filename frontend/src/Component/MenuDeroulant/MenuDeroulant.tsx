@@ -91,7 +91,6 @@ function MenuDeroulant(props: {
                     )
                   }
                   if (item && (item as RetourALaLigne).isRetourALaLigne) {
-                    const Item = item as RetourALaLigne
                     return (
                       <div className='MenuDeroulant-break' key={index}></div>
                     )

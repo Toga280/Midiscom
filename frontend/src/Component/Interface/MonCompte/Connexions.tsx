@@ -8,6 +8,7 @@ function Connexions(props: {
   interfaceMonCompte: number
 }) {
   const [popupHover, setPopupHover] = useState<boolean>(false)
+  // eslint-disable-next-line
   const [contentPopUp, setContentPopUp] = useState<string>('info')
   const [position, setPosition] = useState<Position>({ x: 0, y: 0 })
 
