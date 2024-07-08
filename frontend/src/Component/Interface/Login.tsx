@@ -2,7 +2,12 @@ import React, { useRef, useState } from 'react'
 import './Login.css'
 import axios from 'axios'
 
-function Login(props: { setInterfaceNumber: any; setConnecter: any }) {
+function Login(props: {
+  setInterfaceNumber: any
+  setConnecter: any
+  isAdmin: boolean
+  setIsAdmin: any
+}) {
   const [id, setId] = useState<string>('')
   const [mdp, setMdp] = useState<string>('')
   const [erreurConnection, setErreurConnection] = useState<number | null>(null)
@@ -55,7 +60,15 @@ function Login(props: { setInterfaceNumber: any; setConnecter: any }) {
     if (success) {
       props.setConnecter(true)
       props.setInterfaceNumber(1)
-      document.documentElement.style.setProperty('--interface-width', '50vw')
+      props.isAdmin
+        ? document.documentElement.style.setProperty(
+            '--interface-width',
+            '100vw',
+          )
+        : document.documentElement.style.setProperty(
+            '--interface-width',
+            '50vw',
+          )
       document.documentElement.style.setProperty(
         '--interface-margin-left',
         '25%',
