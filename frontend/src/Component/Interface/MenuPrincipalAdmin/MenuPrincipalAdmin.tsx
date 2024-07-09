@@ -15,7 +15,7 @@ function MenuPrincipalAdmin(props: {
             onClick={() => props.setSwitchAffichage(1)}
           >
             <FontAwesomeIcon icon={faUsers} className='MenuPrincipalAdmin' />
-            <p>Utilisateurs</p>
+            <p>Clients</p>
           </div>
         </div>
       </div>

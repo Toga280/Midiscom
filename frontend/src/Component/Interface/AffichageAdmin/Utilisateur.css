@@ -1,0 +1,14 @@
+td {
+  text-align: center;
+  color: black;
+  cursor: pointer;
+}
+
+td:hover {
+  color: var(--violet);
+}
+
+th {
+  width: 12.5%;
+  height: 50px;
+}
