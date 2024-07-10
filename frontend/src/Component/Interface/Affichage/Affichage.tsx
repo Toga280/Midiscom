@@ -13,7 +13,19 @@ import TempsCalme from './TempsCalme'
 function Affichage(props: { switchAffichage: any; setSwitchAffichage: any }) {
   return (
     <div style={{}}>
-      {props.switchAffichage === 0 && <p></p>}
+      {props.switchAffichage === 0 && (
+        <div style={{ textAlign: 'center' }}>
+          <br />
+          <br />
+          <h1>POUR RAPPEL</h1>
+          <br />
+          <h2> NOTRE SERVICE</h2>
+          <h2>PRODUCTION AUDIO</h2>
+          <h2 style={{ color: '#7984ba' }}>SERA FERME</h2>
+          <br />
+          <h1>DU 07 AU 20 AOÛT</h1>
+        </div>
+      )}
       {props.switchAffichage === 1 && (
         <p>
           <OuvFermExceptionnelles />
