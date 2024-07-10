@@ -93,15 +93,13 @@ function Utilisateur() {
   }
 
   const saveEdit = (id: number) => {
-    console.log('editClientData -> ', editClientData)
     axios
       .patch(`http://olfdif.midis.com:82/api/clients/${id}`, editClientData, {
         headers: {
-          'Content-Type': 'application/ld+json',
+          'Content-Type': 'application/merge-patch+json',
         },
       })
       .then((response) => {
-        console.log('patch -> ', response.data)
         setClients(
           clients.map((client) => (client.id === id ? response.data : client)),
         )
@@ -157,7 +155,6 @@ function Utilisateur() {
     axios
       .get('http://olfdif.midis.com:82/api/clients')
       .then((response) => {
-        console.log(response.data['hydra:member'])
         setClients(response.data['hydra:member'])
         setLoading(false)
       })

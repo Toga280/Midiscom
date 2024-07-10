@@ -11,7 +11,7 @@ function Interface(props: {
   interfaceNumber: number
   setInterfaceNumber: any
 }) {
-  const [isAdmin, setIsAdmin] = useState<boolean>(true)
+  const [isAdmin, setIsAdmin] = useState<boolean>(false)
   return (
     <div className='Interface'>
       {props.interfaceNumber === 0 ? (
