@@ -115,6 +115,14 @@ function MenuPrincipal(props: {
     }
   }, [props.switchAffichage])
 
+  const switchAffichage = (number: number) => {
+    props.setSwitchAffichage(number)
+    document.documentElement.style.setProperty(
+      '--interface-menu-display',
+      'none',
+    )
+  }
+
   return (
     <div className='MenuPrincipal'>
       <div className='MenuPrincipal-all-icon-text'>
@@ -126,7 +134,7 @@ function MenuPrincipal(props: {
               props.switchAffichage !== 1 &&
               setOuvertureFermetureExceptionnelHover(false)
             }
-            onClick={() => props.setSwitchAffichage(1)}
+            onClick={() => switchAffichage(1)}
           >
             {ouvertureFermetureExceptionnelHover ? (
               <img
@@ -147,7 +155,7 @@ function MenuPrincipal(props: {
             onMouseLeave={() =>
               props.switchAffichage !== 2 && setMessageHover(false)
             }
-            onClick={() => props.setSwitchAffichage(2)}
+            onClick={() => switchAffichage(2)}
           >
             {messageHover ? (
               <img className='icon' src={images.messageSelected} />
@@ -162,7 +170,7 @@ function MenuPrincipal(props: {
             onMouseLeave={() =>
               props.switchAffichage !== 3 && selMusiqueHover(false)
             }
-            onClick={() => props.setSwitchAffichage(3)}
+            onClick={() => switchAffichage(3)}
           >
             {musiqueHover ? (
               <img className='icon' src={images.musiqueSelected} />
@@ -177,7 +185,7 @@ function MenuPrincipal(props: {
             onMouseLeave={() =>
               props.switchAffichage !== 9 && setTempsCalmeHover(false)
             }
-            onClick={() => props.setSwitchAffichage(9)}
+            onClick={() => switchAffichage(9)}
           >
             {tempsCalmeHover ? (
               <img className='icon' src={images.horaireSelected} />
@@ -192,7 +200,7 @@ function MenuPrincipal(props: {
             onMouseLeave={() =>
               props.switchAffichage !== 4 && setHoraireHover(false)
             }
-            onClick={() => props.setSwitchAffichage(4)}
+            onClick={() => switchAffichage(4)}
           >
             {horaireHover ? (
               <img className='icon' src={images.horaireSelected} />
@@ -209,7 +217,7 @@ function MenuPrincipal(props: {
             onMouseLeave={() =>
               props.switchAffichage !== 5 && setGalecHover(false)
             }
-            onClick={() => props.setSwitchAffichage(5)}
+            onClick={() => switchAffichage(5)}
           >
             {galecHover ? (
               <img className='icon' src={images.galecSelected} />
@@ -224,7 +232,7 @@ function MenuPrincipal(props: {
             onMouseLeave={() =>
               props.switchAffichage !== 6 && setSpotExpressHover(false)
             }
-            onClick={() => props.setSwitchAffichage(6)}
+            onClick={() => switchAffichage(6)}
           >
             {spotExpressHover ? (
               <img className='icon' src={images.spotExpressSelected} />
@@ -239,7 +247,7 @@ function MenuPrincipal(props: {
             onMouseLeave={() =>
               props.switchAffichage !== 7 && setSpotAIntegrerHover(false)
             }
-            onClick={() => props.setSwitchAffichage(7)}
+            onClick={() => switchAffichage(7)}
           >
             {spotAIntegrerHover ? (
               <img className='icon' src={images.spotAIntegrerSelected} />
@@ -254,7 +262,7 @@ function MenuPrincipal(props: {
             onMouseLeave={() =>
               props.switchAffichage !== 8 && setCataMidisHover(false)
             }
-            onClick={() => props.setSwitchAffichage(8)}
+            onClick={() => switchAffichage(8)}
           >
             {cataMidisHover ? (
               <img className='icon' src={images.cataMidisSelected} />

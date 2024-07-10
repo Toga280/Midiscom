@@ -14,10 +14,11 @@ function Entete(props: {
   setConnecter: any
   interfaceNumber: number
 }) {
-  const [switchMenu, setSwitchMenu] = useState<boolean>(false)
   const handleSwitchMenu = () => {
-    setSwitchMenu(!switchMenu)
-    if (!switchMenu) {
+    var element = document.documentElement
+    var styles = window.getComputedStyle(element)
+    var propertyValue = styles.getPropertyValue('--interface-menu-display')
+    if (propertyValue === 'none') {
       document.documentElement.style.setProperty(
         '--interface-menu-display',
         'block',
