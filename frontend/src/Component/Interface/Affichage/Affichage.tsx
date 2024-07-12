@@ -9,12 +9,32 @@ import SpotIntegrer from './SpotIntegrer'
 import CataloguesMidis from './CataloguesMidis'
 import MusiqueThematiques from './MusiquesThématiques'
 import TempsCalme from './TempsCalme'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faXmark } from '@fortawesome/free-solid-svg-icons'
 
 function Affichage(props: { switchAffichage: any; setSwitchAffichage: any }) {
   return (
     <div style={{}}>
       {props.switchAffichage === 0 && (
         <div style={{ textAlign: 'center' }}>
+          <div
+            style={{
+              textAlign: 'right',
+              marginRight: '30px',
+              marginTop: '30px',
+            }}
+            className='fermer'
+          >
+            <FontAwesomeIcon
+              icon={faXmark}
+              onClick={() =>
+                document.documentElement.style.setProperty(
+                  '--interface-menu-display',
+                  'block',
+                )
+              }
+            />
+          </div>
           <br />
           <br />
           <h1>POUR RAPPEL</h1>

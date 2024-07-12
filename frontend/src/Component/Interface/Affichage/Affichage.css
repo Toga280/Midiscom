@@ -1,0 +1,9 @@
+.fermer {
+  display: none;
+}
+
+@media only screen and (max-width: 768px) and (min-device-width: 320px) and (-webkit-min-device-pixel-ratio: 1.5) {
+  .fermer {
+    display: block;
+  }
+}

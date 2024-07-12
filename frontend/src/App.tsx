@@ -6,6 +6,7 @@ import Interface from './Component/Interface'
 function App() {
   const [connecter, setConnecter] = useState<boolean>(false)
   const [interfaceNumber, setInterfaceNumber] = useState<number>(0)
+  const [switchAffichage, setSwitchAffichage] = useState<number>(0)
 
   return (
     <div className='App'>
@@ -15,6 +16,7 @@ function App() {
           setConnecter={setConnecter}
           setInterfaceNumber={setInterfaceNumber}
           interfaceNumber={interfaceNumber}
+          setSwitchAffichage={setSwitchAffichage}
         />
       </div>
       <div className='App-Interface'>
@@ -23,6 +25,8 @@ function App() {
           setConnecter={setConnecter}
           interfaceNumber={interfaceNumber}
           setInterfaceNumber={setInterfaceNumber}
+          switchAffichage={switchAffichage}
+          setSwitchAffichage={setSwitchAffichage}
         />
       </div>
     </div>

@@ -13,6 +13,7 @@ function Entete(props: {
   setInterfaceNumber: any
   setConnecter: any
   interfaceNumber: number
+  setSwitchAffichage: any
 }) {
   const handleSwitchMenu = () => {
     var element = document.documentElement
@@ -62,7 +63,10 @@ function Entete(props: {
   return (
     <div className='Entete'>
       <div
-        onClick={() => props.setInterfaceNumber(props.connecter ? 1 : 0)}
+        onClick={() => {
+          props.setInterfaceNumber(props.connecter ? 1 : 0)
+          props.setSwitchAffichage(0)
+        }}
         className='midis-com-container'
       >
         <p className='Entete-midis'>midis</p>

@@ -156,41 +156,6 @@ function BesoinAide(props: {
           <MenuDeroulant menuDeroulantInterface={MidisboxDeconnecte} />
           <MenuDeroulant menuDeroulantInterface={PointDeVenteDeconnecte} />
         </div>
-        <div className='BesoinAide-contact'>
-          <div className='BesoinAide-contact-box'>
-            <div style={{ marginLeft: '10px' }}>
-              <p style={{ fontWeight: 'bold' }}>Service Technique</p>
-              <div className='BesoinAide-contact-box-contact'>
-                <FontAwesomeIcon icon={faPhone} size='2xl' />
-                <p style={{ marginLeft: '10px' }}>05 62 71 83 11 (choix 1)</p>
-              </div>
-            </div>
-          </div>
-          <div className='BesoinAide-contact-box'>
-            <div style={{ marginLeft: '10px' }}>
-              <p style={{ fontWeight: 'bold' }}>Contact commercial</p>
-              <div className='BesoinAide-contact-box-contact'>
-                <FontAwesomeIcon icon={faPhone} size='2xl' />
-                <p style={{ marginLeft: '10px' }}>05 62 71 83 11 (choix 2)</p>
-              </div>
-            </div>
-          </div>
-          <div className='BesoinAide-contact-box' id='last'>
-            <div style={{ marginLeft: '10px' }}>
-              <p style={{ fontWeight: 'bold' }}>
-                Contact interface Radio E.Leclerc
-              </p>
-              <div className='BesoinAide-contact-box-contact'>
-                <FontAwesomeIcon icon={faPhone} size='2xl' />
-                <p style={{ marginLeft: '10px' }}>05 62 76 12 83</p>
-              </div>
-              <div className='BesoinAide-contact-box-contact'>
-                <FontAwesomeIcon icon={faEnvelope} size='2xl' />
-                <p style={{ marginLeft: '10px' }}>s.marketing@midis.com</p>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   )

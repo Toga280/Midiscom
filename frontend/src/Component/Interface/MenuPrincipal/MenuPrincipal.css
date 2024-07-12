@@ -8,7 +8,7 @@
 .MenuPrincipal-all-icon-text {
   width: 100%;
   height: 100%;
-  font-size: 12px;
+  font-size: var(--petit);
   font-weight: bold;
   display: flex;
   flex-direction: column;

@@ -7,7 +7,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 24px;
+  font-size: var(--moyen);
 }
 
 .Entete-midis {
@@ -37,7 +37,7 @@
 
 .account-container p {
   margin-left: 2vh;
-  font-size: 12px;
+  font-size: var(--petit);
 }
 
 .Entete-mon-compte:hover {

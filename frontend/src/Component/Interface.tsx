@@ -10,6 +10,8 @@ function Interface(props: {
   setConnecter: any
   interfaceNumber: number
   setInterfaceNumber: any
+  switchAffichage: number
+  setSwitchAffichage: any
 }) {
   const [isAdmin, setIsAdmin] = useState<boolean>(false)
   return (
@@ -22,7 +24,13 @@ function Interface(props: {
           setIsAdmin={setIsAdmin}
         />
       ) : null}
-      {props.interfaceNumber === 1 ? <Accueil isAdmin={isAdmin} /> : null}
+      {props.interfaceNumber === 1 ? (
+        <Accueil
+          isAdmin={isAdmin}
+          switchAffichage={props.switchAffichage}
+          setSwitchAffichage={props.setSwitchAffichage}
+        />
+      ) : null}
       {props.interfaceNumber === 2 ? (
         <MonCompte setInterfaceNumber={props.setInterfaceNumber} />
       ) : null}

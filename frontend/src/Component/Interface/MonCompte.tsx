@@ -8,6 +8,7 @@ import VosCommandes from './MonCompte/VosCommandes'
 import BesoinAide from './MonCompte/BesoinAide'
 import VosAdressesContacts from './MonCompte/VosAdressesContacts'
 import Connexions from './MonCompte/Connexions'
+import NousContacter from './MonCompte/NousContacter'
 
 function MonCompte(props: { setInterfaceNumber: any }) {
   const [interfaceMonCompte, setInterfaceMonCompte] = useState<number>(0)
@@ -50,6 +51,12 @@ function MonCompte(props: { setInterfaceNumber: any }) {
         )}
         {interfaceMonCompte === 5 && (
           <Connexions
+            setInterfaceMonCompte={setInterfaceMonCompte}
+            interfaceMonCompte={interfaceMonCompte}
+          />
+        )}
+        {interfaceMonCompte === 6 && (
+          <NousContacter
             setInterfaceMonCompte={setInterfaceMonCompte}
             interfaceMonCompte={interfaceMonCompte}
           />

@@ -77,7 +77,15 @@ function MonCompte(props: { setInterfaceMonCompte: any }) {
             </p>
           </div>
         </div>
-        <div className='MonCompte-button-nothing'></div>
+        <div className='MonCompte-button-right'>
+          <div
+            onClick={() => props.setInterfaceMonCompte(6)}
+            className='MonCompte-connexions'
+          >
+            <FontAwesomeIcon icon={faCircleInfo} size='2xl' />
+            <p>Nous contacter</p>
+          </div>
+        </div>
       </div>
     </div>
   )
