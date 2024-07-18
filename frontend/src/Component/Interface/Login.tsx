@@ -37,15 +37,29 @@ function Login(props: {
       if (response.status === 200) {
         console.log('token -> ', data.token)
         console.log('id -> ', data.id)
+        if (data.id === 1) {
+          props.setIsAdmin(true)
+          document.documentElement.style.setProperty(
+            '--interface-width',
+            '100vw',
+          )
+        } else {
+          document.documentElement.style.setProperty(
+            '--interface-width',
+            '50vw',
+          )
+        }
         return true
       }
     } catch (error) {
       if (axios.isAxiosError(error) && error.response?.status === 401) {
         console.log('erreur lors de la connection, mauvais identifiants ou mdp')
         setErreurConnection(401)
+        document.documentElement.style.setProperty('--interface-width', '50vw')
         return false
       } else {
         console.error('Error:', error)
+        document.documentElement.style.setProperty('--interface-width', '50vw')
         return false
       }
     }
@@ -60,15 +74,6 @@ function Login(props: {
     if (/*success*/ true) {
       props.setConnecter(true)
       props.setInterfaceNumber(1)
-      props.isAdmin
-        ? document.documentElement.style.setProperty(
-            '--interface-width',
-            '100vw',
-          )
-        : document.documentElement.style.setProperty(
-            '--interface-width',
-            '50vw',
-          )
       document.documentElement.style.setProperty(
         '--interface-margin-left',
         '25%',

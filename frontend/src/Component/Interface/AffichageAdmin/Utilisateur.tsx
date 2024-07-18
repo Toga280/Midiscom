@@ -155,6 +155,7 @@ function Utilisateur() {
     axios
       .get('http://olfdif.midis.com:82/api/clients')
       .then((response) => {
+        console.log('data -> ', response.data)
         setClients(response.data['hydra:member'])
         setLoading(false)
       })
