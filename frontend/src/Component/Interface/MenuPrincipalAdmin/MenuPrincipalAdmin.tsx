@@ -1,4 +1,4 @@
-import { faUsers } from '@fortawesome/free-solid-svg-icons'
+import { faCloudArrowUp, faUsers } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import './MenuPrincipalAdmin.css'
 import React from 'react'
@@ -23,6 +23,16 @@ function MenuPrincipalAdmin(props: {
           >
             <FontAwesomeIcon icon={faUsers} className='MenuPrincipalAdmin' />
             <p>Identifiant</p>
+          </div>
+          <div
+            className='MenuPrincipal-icon-text'
+            onClick={() => props.setSwitchAffichage(3)}
+          >
+            <FontAwesomeIcon
+              icon={faCloudArrowUp}
+              className='MenuPrincipalAdmin'
+            />
+            <p>upload vidéo</p>
           </div>
         </div>
       </div>

@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import './Utilisateur.css'
+import Cookies from 'js-cookie'
 
 interface Row {
   id: number
@@ -40,6 +41,8 @@ function Utilisateur() {
     email: '',
     identifiants: [],
   })
+
+  const token = Cookies.get('token')
 
   const addRow = () => {
     const newId = rows.length + 1
@@ -94,7 +97,7 @@ function Utilisateur() {
 
   const saveEdit = (id: number) => {
     axios
-      .patch(`http://olfdif.midis.com:82/api/clients/${id}`, editClientData, {
+      .patch(`http://olfdif.midis.com:82/api/v1/client/${id}`, editClientData, {
         headers: {
           'Content-Type': 'application/merge-patch+json',
         },
@@ -117,7 +120,7 @@ function Utilisateur() {
   const createClient = () => {
     axios
       .post(
-        'http://olfdif.midis.com:82/api/clients',
+        'http://olfdif.midis.com:82/api/v1/client',
         {
           nom: newClientNom,
           adresse: newClientAdresse,
@@ -153,7 +156,11 @@ function Utilisateur() {
 
   useEffect(() => {
     axios
-      .get('http://olfdif.midis.com:82/api/clients')
+      .get('http://olfdif.midis.com:82/api/v1/clients', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .then((response) => {
         console.log('data -> ', response.data)
         setClients(response.data['hydra:member'])

@@ -4,6 +4,7 @@ import swaggerJsdoc from 'swagger-jsdoc'
 import usersRouter from './routes/users'
 import { SetUpPortAndCore, app } from './settings/settings'
 import { SetUpBD } from './database/setUpBD'
+const multer = require('multer')
 
 const options = {
   definition: {
@@ -16,6 +17,26 @@ const options = {
   },
   apis: ['./src/routes/*.ts'],
 }
+
+// Configuration de Multer
+const storage = multer.diskStorage({
+  destination: (req: any, file: any, cb: any) => {
+    cb(null, 'uploads/') // Dossier de destination
+  },
+  filename: (req: any, file: any, cb: any) => {
+    cb(null, `${Date.now()}-${file.originalname}`) // Nom du fichier
+  },
+})
+
+const upload = multer({ storage: storage })
+
+// Route pour l'upload de fichiers
+app.post('/upload', upload.single('file'), (req: any, res: any) => {
+  if (!req.file) {
+    return res.status(400).send('No file uploaded.')
+  }
+  res.send(`File uploaded: ${req.file.filename}`)
+})
 
 const specs = swaggerJsdoc(options)
 

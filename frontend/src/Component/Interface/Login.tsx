@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react'
 import './Login.css'
 import axios from 'axios'
+import Cookies from 'js-cookie'
 
 function Login(props: {
   setInterfaceNumber: any
@@ -11,6 +12,10 @@ function Login(props: {
   const [id, setId] = useState<string>('')
   const [mdp, setMdp] = useState<string>('')
   const [erreurConnection, setErreurConnection] = useState<number | null>(null)
+
+  const setToken = (token: string) => {
+    Cookies.set('token', token, { expires: 7 }) // Le token sera valide pendant 7 jours
+  }
 
   const handleChangeId = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setId(event.target.value)
@@ -35,31 +40,16 @@ function Login(props: {
       const data = response.data
       console.log(response)
       if (response.status === 200) {
-        console.log('token -> ', data.token)
-        console.log('id -> ', data.id)
-        if (data.id === 1) {
-          props.setIsAdmin(true)
-          document.documentElement.style.setProperty(
-            '--interface-width',
-            '100vw',
-          )
-        } else {
-          document.documentElement.style.setProperty(
-            '--interface-width',
-            '50vw',
-          )
-        }
+        setToken(data.token)
         return true
       }
     } catch (error) {
       if (axios.isAxiosError(error) && error.response?.status === 401) {
         console.log('erreur lors de la connection, mauvais identifiants ou mdp')
         setErreurConnection(401)
-        document.documentElement.style.setProperty('--interface-width', '50vw')
         return false
       } else {
         console.error('Error:', error)
-        document.documentElement.style.setProperty('--interface-width', '50vw')
         return false
       }
     }
@@ -69,11 +59,18 @@ function Login(props: {
   const connection = async () => {
     setErreurConnection(null)
     const success = await requestConnection()
-    console.log('erreurConnection --> ', erreurConnection)
-    console.log('success --> ', success)
     if (/*success*/ true) {
       props.setConnecter(true)
       props.setInterfaceNumber(1)
+      props.isAdmin
+        ? document.documentElement.style.setProperty(
+            '--interface-width',
+            '95vw',
+          )
+        : document.documentElement.style.setProperty(
+            '--interface-width',
+            '50vw',
+          )
       document.documentElement.style.setProperty(
         '--interface-margin-left',
         '25%',
