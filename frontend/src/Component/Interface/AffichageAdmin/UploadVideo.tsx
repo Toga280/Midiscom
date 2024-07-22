@@ -9,7 +9,7 @@ function UploadVideo() {
       formData.append('file', file)
 
       axios
-        .post('http://localhost:5000/upload', formData, {
+        .post('http://toga.alwaysdata.net/midiscom/api/upload', formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
