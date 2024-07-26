@@ -22,3 +22,14 @@
 .Identifiant-conteneur:hover {
   transform: scale(1.1);
 }
+
+.icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50%;
+}
+
+.icon-container .svg-inline--fa {
+  font-size: 2rem; /* Ajustez la taille de l'icône si nécessaire */
+}
