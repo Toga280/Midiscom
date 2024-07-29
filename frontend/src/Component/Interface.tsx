@@ -13,7 +13,7 @@ function Interface(props: {
   switchAffichage: number
   setSwitchAffichage: any
 }) {
-  const [isAdmin, setIsAdmin] = useState<boolean>(false)
+  const [isAdmin, setIsAdmin] = useState<boolean>(true)
   return (
     <div className='Interface'>
       {props.interfaceNumber === 0 ? (

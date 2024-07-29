@@ -4,6 +4,7 @@ import axios from 'axios'
 import Cookies from 'js-cookie'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import { URLAPI } from '../../../Setting'
 
 interface Client {
   id: number
@@ -47,7 +48,6 @@ function Identifiant() {
   const [selectedClient, setSelectedClient] = useState<Client | null>(null)
   const [selectedMagasin, setSelectedMagasin] = useState<Magasin | null>(null)
   const [allConcepts, setAllConcepts] = useState<Concept[] | null>(null)
-  const [allMagasins, setAllMagasins] = useState<Magasin[] | null>(null)
   const token = Cookies.get('token')
 
   const handleSelectClient = (client: Client) => {
@@ -72,14 +72,11 @@ function Identifiant() {
 
   const getMagasin = async (id: string | number) => {
     try {
-      const response = await axios.get(
-        `http://olfdif.midis.com:82/api/v1/magasin/${id}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+      const response = await axios.get(`${URLAPI}magasin/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
         },
-      )
+      })
       setSelectedMagasin(response.data['hydra:member'][0])
     } catch (error: unknown) {
       if (error instanceof Error) {
@@ -94,14 +91,11 @@ function Identifiant() {
 
   const getAllConcepts = async () => {
     try {
-      const response = await axios.get(
-        'http://olfdif.midis.com:82/api/v1/concepts',
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+      const response = await axios.get(`${URLAPI}concepts`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
         },
-      )
+      })
       setAllConcepts(response.data['hydra:member'])
     } catch (error: unknown) {
       if (error instanceof Error) {
@@ -114,51 +108,23 @@ function Identifiant() {
     }
   }
 
-  const getAllMagasins = async () => {
-    try {
-      const response = await axios.get(
-        'http://olfdif.midis.com:82/api/v1/magasins',
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        },
-      )
-      setAllMagasins(response.data['hydra:member'])
-    } catch (error: unknown) {
-      if (error instanceof Error) {
-        throw new Error('Erreur lors du getAllMagasins : ' + error.message)
-      } else {
-        throw new Error(
-          "Erreur lors du getAllMagasins : une erreur inconnue s'est produite",
-        )
-      }
-    }
-  }
-
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const clientsResponse = await axios.get(
-          'http://olfdif.midis.com:82/api/v1/clients',
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
+        const clientsResponse = await axios.get(`${URLAPI}clients`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
           },
-        )
-        const magasinsResponse = await axios.get(
-          'http://olfdif.midis.com:82/api/v1/magasins',
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
+        })
+        const magasinsResponse = await axios.get(`${URLAPI}magasins`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
           },
-        )
+        })
 
         const clientsData = clientsResponse.data['hydra:member']
         const magasinsData = magasinsResponse.data['hydra:member']
-
+        console.log('data Client : ', clientsResponse.data['hydra:member'])
         const clientsWithMagasinNames = clientsData.map((client: Client) => {
           const magasinUrl = client.magasins[0]
           const magasinId = getIdFromUrl(magasinUrl)
