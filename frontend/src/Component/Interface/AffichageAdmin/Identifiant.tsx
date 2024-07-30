@@ -5,6 +5,7 @@ import Cookies from 'js-cookie'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { URLAPI } from '../../../Setting'
+import CreationIdentifiant from './CreationIdentifiant'
 
 interface Client {
   id: number
@@ -20,11 +21,11 @@ interface Client {
 interface Magasin {
   id: number
   client: string
-  concept: string
+  typeMagasin: string
   nom: string
 }
 
-interface Concept {
+interface TypeMagasin {
   id: number
   nom: string
   magasins: string[]
@@ -47,7 +48,10 @@ function Identifiant() {
   const [selectedPart, setSelectedPart] = useState<boolean>(false)
   const [selectedClient, setSelectedClient] = useState<Client | null>(null)
   const [selectedMagasin, setSelectedMagasin] = useState<Magasin | null>(null)
-  const [allConcepts, setAllConcepts] = useState<Concept[] | null>(null)
+  const [allTypeMagasins, setAllTypeMagasins] = useState<TypeMagasin[] | null>(
+    null,
+  )
+  const [creation, setCreation] = useState<boolean>(false)
   const token = Cookies.get('token')
 
   const handleSelectClient = (client: Client) => {
@@ -55,7 +59,7 @@ function Identifiant() {
     if (client.magasins.length > 0) {
       getMagasin(getIdFromUrl(client.magasins[0]))
     }
-    getAllConcepts()
+    getAllTypeMagasins()
     setSelectedPart(true)
   }
 
@@ -66,8 +70,7 @@ function Identifiant() {
 
   const getIdFromUrl = (url: string) => {
     const parts: string[] = url.split('/')
-    const id: string = parts[parts.length - 1]
-    return id
+    return parts[parts.length - 1]
   }
 
   const getMagasin = async (id: string | number) => {
@@ -78,33 +81,29 @@ function Identifiant() {
         },
       })
       setSelectedMagasin(response.data['hydra:member'][0])
-    } catch (error: unknown) {
-      if (error instanceof Error) {
-        throw new Error('Erreur lors du getMagasin : ' + error.message)
-      } else {
-        throw new Error(
-          "Erreur lors du getMagasin : une erreur inconnue s'est produite",
-        )
-      }
+    } catch (error) {
+      handleError('Erreur lors du getMagasin', error)
     }
   }
 
-  const getAllConcepts = async () => {
+  const getAllTypeMagasins = async () => {
     try {
-      const response = await axios.get(`${URLAPI}concepts`, {
+      const response = await axios.get(`${URLAPI}typeMagasins`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
-      setAllConcepts(response.data['hydra:member'])
-    } catch (error: unknown) {
-      if (error instanceof Error) {
-        throw new Error('Erreur lors du getAllConcepts : ' + error.message)
-      } else {
-        throw new Error(
-          "Erreur lors du getAllConcepts : une erreur inconnue s'est produite",
-        )
-      }
+      setAllTypeMagasins(response.data['hydra:member'])
+    } catch (error) {
+      handleError('Erreur lors du getAllTypeMagasins', error)
+    }
+  }
+
+  const handleError = (message: string, error: unknown) => {
+    if (error instanceof Error) {
+      setError(`${message} : ${error.message}`)
+    } else {
+      setError(`${message} : une erreur inconnue s'est produite`)
     }
   }
 
@@ -124,7 +123,7 @@ function Identifiant() {
 
         const clientsData = clientsResponse.data['hydra:member']
         const magasinsData = magasinsResponse.data['hydra:member']
-        console.log('data Client : ', clientsResponse.data['hydra:member'])
+
         const clientsWithMagasinNames = clientsData.map((client: Client) => {
           const magasinUrl = client.magasins[0]
           const magasinId = getIdFromUrl(magasinUrl)
@@ -139,12 +138,8 @@ function Identifiant() {
 
         setClients(clientsWithMagasinNames)
         setLoading(false)
-      } catch (error: unknown) {
-        if (error instanceof Error) {
-          setError(error.message)
-        } else {
-          setError("Une erreur inconnue s'est produite")
-        }
+      } catch (error) {
+        handleError('Erreur lors du fetch des données', error)
         setLoading(false)
       }
     }
@@ -158,23 +153,33 @@ function Identifiant() {
   return (
     <div>
       {!selectedPart ? (
-        <div className='Identifiant'>
-          <div className='Identifiant-conteneur'>
-            <div className='icon-container'>
-              <FontAwesomeIcon icon={faPlus} size='2x' />
+        <div>
+          {!creation ? (
+            <div className='Identifiant'>
+              <div
+                className='Identifiant-conteneur'
+                onClick={() => setCreation(true)}
+              >
+                <div className='icon-container'>
+                  <FontAwesomeIcon icon={faPlus} size='2x' />
+                </div>
+              </div>
+
+              {clients.map((client) => (
+                <div
+                  key={client.id}
+                  className='Identifiant-conteneur'
+                  onClick={() => handleSelectClient(client)}
+                >
+                  <p>Nom du magasin: {client.nomMagasin}</p>
+                  <p>Numéro Client: {client.numeroClient}</p>
+                  <p>Email: {client.email}</p>
+                </div>
+              ))}
             </div>
-          </div>
-          {clients.map((client) => (
-            <div
-              key={client.id}
-              className='Identifiant-conteneur'
-              onClick={() => handleSelectClient(client)}
-            >
-              <p>Nom du magasin: {client.nomMagasin}</p>
-              <p>Numéro Client: {client.numeroClient}</p>
-              <p>Email: {client.email}</p>
-            </div>
-          ))}
+          ) : (
+            <CreationIdentifiant />
+          )}
         </div>
       ) : (
         <div>
@@ -201,14 +206,14 @@ function Identifiant() {
             <p>Compte serveur: x</p>
             <p>Identifiant: x</p>
             <p>Mot de passe: {selectedClient?.numeroClient}</p>
-            <p>Concepts:</p>
+            <p>TypeMagasins:</p>
             <div>
-              {allConcepts?.map((concept) => (
+              {allTypeMagasins?.map((TypeMagasins) => (
                 <div
-                  key={concept.id}
+                  key={TypeMagasins.id}
                   style={{ display: 'flex', alignItems: 'center' }}
                 >
-                  <p>{concept.nom}</p>
+                  <p>{TypeMagasins.nom}</p>
                   <input type='checkbox' />
                 </div>
               ))}
