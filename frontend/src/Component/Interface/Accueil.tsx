@@ -4,39 +4,58 @@ import MenuPrincipal from './MenuPrincipal/MenuPrincipal'
 import Affichage from './Affichage/Affichage'
 import AffichageAdmin from './AffichageAdmin/AffichageAdmin'
 import MenuPrincipalAdmin from './MenuPrincipalAdmin/MenuPrincipalAdmin'
-// import EnteteAffichage from './Affichage/EnteteAffichage'
+import MenuPrincipalState from './MenuPrincipalState/MenuPrincipalState'
+import AffichageState from './AffichageState/AffichageState'
 
-function Accueil(props: {
+interface AccueilProps {
   isAdmin: boolean
   switchAffichage: number
-  setSwitchAffichage: any
-}) {
+  setSwitchAffichage: React.Dispatch<React.SetStateAction<number>>
+}
+
+const Accueil: React.FC<AccueilProps> = ({
+  isAdmin,
+  switchAffichage,
+  setSwitchAffichage,
+}) => {
+  const [state, setState] = useState<boolean>(false)
+
   return (
     <div className='Accueil'>
       <div className='Accueil-menu-principal'>
-        {props.isAdmin ? (
+        <button onClick={() => setState(!state)}>switch affichage</button>
+        {isAdmin ? (
           <MenuPrincipalAdmin
-            switchAffichage={props.switchAffichage}
-            setSwitchAffichage={props.setSwitchAffichage}
+            switchAffichage={switchAffichage}
+            setSwitchAffichage={setSwitchAffichage}
+          />
+        ) : !state ? (
+          <MenuPrincipal
+            switchAffichage={switchAffichage}
+            setSwitchAffichage={setSwitchAffichage}
           />
         ) : (
-          <MenuPrincipal
-            switchAffichage={props.switchAffichage}
-            setSwitchAffichage={props.setSwitchAffichage}
+          <MenuPrincipalState
+            switchAffichage={switchAffichage}
+            setSwitchAffichage={setSwitchAffichage}
           />
         )}
       </div>
       <div className='Accueil-affichage'>
-        {/* <EnteteAffichage /> */}
-        {props.isAdmin ? (
+        {isAdmin ? (
           <AffichageAdmin
-            switchAffichage={props.switchAffichage}
-            setSwitchAffichage={props.setSwitchAffichage}
+            switchAffichage={switchAffichage}
+            setSwitchAffichage={setSwitchAffichage}
+          />
+        ) : !state ? (
+          <Affichage
+            switchAffichage={switchAffichage}
+            setSwitchAffichage={setSwitchAffichage}
           />
         ) : (
-          <Affichage
-            switchAffichage={props.switchAffichage}
-            setSwitchAffichage={props.setSwitchAffichage}
+          <AffichageState
+            switchAffichage={switchAffichage}
+            setSwitchAffichage={setSwitchAffichage}
           />
         )}
       </div>
