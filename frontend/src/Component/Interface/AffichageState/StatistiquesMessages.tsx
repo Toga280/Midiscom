@@ -27,7 +27,6 @@ const SelectionnerMessages: MenuDeroulantInterface = {
 }
 
 function StatistiquesMessages() {
-  const [questionHover, setQuestionHover] = useState<boolean>(false)
   return (
     <div className='OuvFermExceptionnelles'>
       <div className='OuvFermExceptionnelles-header'>

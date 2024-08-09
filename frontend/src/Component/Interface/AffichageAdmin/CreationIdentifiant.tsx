@@ -12,16 +12,18 @@ interface Identifiant {
 interface Abonnement {
   nom: string
   type: string
+  id: number
 }
 
 interface TypeMagasin {
   nom: string
-  id?: number
+  id: number
 }
 
 interface Magasin {
   nom: string
   typeMagasin: number
+  abonnement: number
 }
 
 interface Client {
@@ -29,6 +31,8 @@ interface Client {
   adresse: string
   email: string
   numeroClient: string
+  idMagasin?: number
+  idIdentifiant?: number
 }
 
 function CreationIdentifiant() {
@@ -45,28 +49,39 @@ function CreationIdentifiant() {
     password: '',
     role: 'ROLE_USER',
   })
-  const [typeMagasin, setTypeMagasin] = useState<TypeMagasin>({
-    nom: '',
-  })
+  const [selectedTypeMagasinId, setSelectedTypeMagasinId] = useState<
+    number | null
+  >(null)
   const [magasin, setMagasin] = useState<Magasin>({
     nom: '',
     typeMagasin: 0,
+    abonnement: 0,
   })
   const [abonnement, setAbonnement] = useState<Abonnement>({
     nom: '',
     type: '',
+    id: 0,
   })
-  const [clientID, setClientID] = useState<number | null>(null)
   const [identifiants, setIdentifiants] = useState<Identifiant[]>([])
   const [allTypeMagasin, setAllTypeMagasin] = useState<TypeMagasin[]>([])
   const [allAbonnement, setAllAbonnement] = useState<Abonnement[]>([])
   const [filteredAbonnements, setFilteredAbonnements] = useState<Abonnement[]>(
     [],
   )
+  const [emailError, setEmailError] = useState<string>('')
 
   const handleClientChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target
     setClient({ ...client, [name]: value })
+
+    if (name === 'email') {
+      setEmailError(isEmailValid(value) ? '' : 'Adresse email invalide.')
+    }
+  }
+
+  const isEmailValid = (email: string): boolean => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    return emailRegex.test(email)
   }
 
   const handleIdentifiantChange = (
@@ -77,9 +92,10 @@ function CreationIdentifiant() {
   }
 
   const handleTypeMagasinChange = (
-    event: React.ChangeEvent<HTMLInputElement>,
+    event: React.ChangeEvent<HTMLSelectElement>,
   ) => {
-    setTypeMagasin({ nom: event.target.value })
+    const selectedId = parseInt(event.target.value, 10)
+    setSelectedTypeMagasinId(selectedId)
   }
 
   const handleMagasinChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -100,14 +116,13 @@ function CreationIdentifiant() {
   const handleAbonnementNomChange = (
     event: React.ChangeEvent<HTMLSelectElement>,
   ) => {
-    setAbonnement({ ...abonnement, nom: event.target.value })
-  }
-
-  const handleRoleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setIdentifiant({
-      ...identifiant,
-      role: event.target.value as 'ROLE_USER' | 'ROLE_ADMIN',
-    })
+    const selectedAbonnement = allAbonnement.find(
+      (item) =>
+        item.nom === event.target.value && item.type === abonnement.type,
+    )
+    if (selectedAbonnement) {
+      setAbonnement(selectedAbonnement)
+    }
   }
 
   const getAllTypeMagasin = async () => {
@@ -136,26 +151,15 @@ function CreationIdentifiant() {
     }
   }
 
-  const postTypeMagasin = async () => {
-    if (!typeMagasin.nom) return null
-    try {
-      const response = await axios.post(`${URLAPI}typeMagasin`, typeMagasin, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      return response.data.id
-    } catch (error) {
-      console.error('Error posting typeMagasin:', error)
-    }
-    return null
-  }
-
-  const postMagasin = async (typeMagasinId: number) => {
+  const postMagasin = async () => {
     try {
       const response = await axios.post(
         `${URLAPI}magasin`,
-        { ...magasin, typeMagasin: typeMagasinId },
+        {
+          ...magasin,
+          typeMagasin: selectedTypeMagasinId,
+          abonnement: abonnement.id,
+        },
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -169,80 +173,37 @@ function CreationIdentifiant() {
     return null
   }
 
-  const postAbonnement = async (magasinId: number) => {
+  const postIdentifiants = async () => {
     try {
-      const response = await axios.post(
-        `${URLAPI}abonnement`,
-        { ...abonnement, magasin: magasinId },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+      const response = await axios.post(`${URLAPI}identifiant`, identifiant, {
+        headers: {
+          Authorization: `Bearer ${token}`,
         },
-      )
+      })
       return response.data.id
-    } catch (error) {
-      console.error('Error posting abonnement:', error)
-    }
-    return null
-  }
-
-  const postIdentifiants = async (
-    clientId: number,
-    magasinId: number,
-    abonnementId: number,
-  ) => {
-    try {
-      for (const id of identifiants) {
-        await axios.post(
-          `${URLAPI}identifiant`,
-          {
-            ...id,
-            client: clientId,
-            magasin: magasinId,
-            abonnement: abonnementId,
-          },
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          },
-        )
-      }
     } catch (error) {
       console.error('Error posting identifiants:', error)
     }
   }
 
   const postAllData = async () => {
+    console.log('Client : ', client)
+    console.log('Identifiant : ', identifiant)
+    console.log('TypeMagasinId : ', selectedTypeMagasinId)
+    console.log('NomMagasin : ', magasin)
+    console.log('Abonnement : ', abonnement)
     try {
-      // Créer le client
-      const clientResponse = await axios.post(`${URLAPI}client`, client, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      const clientId = clientResponse.data.id
+      const idMagasin = await postMagasin()
+      const idIdentifiant = await postIdentifiants()
 
-      // Créer le type de magasin s'il n'existe pas encore
-      const typeMagasinId = await postTypeMagasin()
-      if (!typeMagasinId) throw new Error('Failed to create typeMagasin')
-
-      // Créer le magasin
-      const magasinId = await postMagasin(typeMagasinId)
-      if (!magasinId) throw new Error('Failed to create magasin')
-
-      // Créer l'abonnement
-      const abonnementId = await postAbonnement(magasinId)
-      if (!abonnementId) throw new Error('Failed to create abonnement')
-
-      // Créer les identifiants
-      await postIdentifiants(clientId, magasinId, abonnementId)
+      // const clientResponse = await axios.post(`${URLAPI}client`, client, {
+      //   headers: {
+      //     Authorization: `Bearer ${token}`,
+      //   },
+      // })
+      // const clientId = clientResponse.data.id
 
       console.log('All data posted successfully')
-      setClientID(null)
-      setIdentifiants([])
-      setAffichage(0)
     } catch (error) {
       console.error('Error posting all data:', error)
     }
@@ -280,6 +241,7 @@ function CreationIdentifiant() {
               value={client.email}
               onChange={handleClientChange}
             />
+            {emailError && <p style={{ color: 'red' }}>{emailError}</p>}
             <p>Numéro de client :</p>
             <input
               type='text'
@@ -287,7 +249,18 @@ function CreationIdentifiant() {
               value={client.numeroClient}
               onChange={handleClientChange}
             />
-            <button onClick={() => setAffichage(1)}>Créer Client</button>
+            <button
+              onClick={() => setAffichage(1)}
+              disabled={
+                !client.nom ||
+                !client.adresse ||
+                !client.email ||
+                !client.numeroClient ||
+                !!emailError
+              }
+            >
+              Créer Client
+            </button>
           </div>
         )
       case 1:
@@ -308,28 +281,36 @@ function CreationIdentifiant() {
               value={identifiant.password}
               onChange={handleIdentifiantChange}
             />
-            <p>Rôle :</p>
-            <select
-              name='role'
-              value={identifiant.role}
-              onChange={handleRoleChange}
+            <button
+              onClick={() => setAffichage(2)}
+              disabled={!identifiant.login || !identifiant.password}
             >
-              <option value='ROLE_USER'>Utilisateur</option>
-              <option value='ROLE_ADMIN'>Administrateur</option>
-            </select>
-            <button onClick={() => setAffichage(2)}>Type de Magasin</button>
+              Type de Magasin
+            </button>
           </div>
         )
       case 2:
         return (
           <div>
             <h1>Type de Magasin</h1>
-            <select name='typeMagasin'>
+            <select
+              name='typeMagasin'
+              value={selectedTypeMagasinId ?? ''}
+              onChange={handleTypeMagasinChange}
+            >
+              <option value=''>Sélectionner un type de magasin</option>
               {allTypeMagasin.map((item) => (
-                <option value={item?.id}>{item.nom}</option>
+                <option key={item.id} value={item.id}>
+                  {item.nom}
+                </option>
               ))}
             </select>
-            <button onClick={() => setAffichage(3)}>Nom du Magasin</button>
+            <button
+              onClick={() => setAffichage(3)}
+              disabled={selectedTypeMagasinId === null}
+            >
+              Nom du Magasin
+            </button>
           </div>
         )
       case 3:
@@ -343,7 +324,7 @@ function CreationIdentifiant() {
               value={magasin.nom}
               onChange={handleMagasinChange}
             />
-            <button onClick={() => setAffichage(4)}>
+            <button onClick={() => setAffichage(4)} disabled={!magasin.nom}>
               Ajouter un Abonnement
             </button>
           </div>
@@ -375,14 +356,19 @@ function CreationIdentifiant() {
                 >
                   <option value=''>Sélectionner un nom</option>
                   {filteredAbonnements.map((item) => (
-                    <option key={item.nom} value={item.nom}>
+                    <option key={item.id} value={item.nom}>
                       {item.nom}
                     </option>
                   ))}
                 </select>
               </>
             )}
-            <button onClick={postAllData}>Finaliser la Création</button>
+            <button
+              onClick={postAllData}
+              disabled={abonnement.type === '' || abonnement.nom === ''}
+            >
+              Finaliser la Création
+            </button>
           </div>
         )
       default:
